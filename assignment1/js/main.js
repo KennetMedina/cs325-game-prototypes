@@ -35,7 +35,7 @@ window.onload = function() {
 
         game.physics.startSystem(Phaser.Physics.ARCADE);
 
-        game.stage.backgroundColor = '#000000';
+        //game.stage.backgroundColor = '#000000';
 
         bg = game.add.tileStrite(0, 0, 800, 600, 'background');
         bg.fixedToCamera = true;
