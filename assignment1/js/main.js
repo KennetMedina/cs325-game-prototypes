@@ -19,7 +19,7 @@ window.onload = function() {
         // Load an image and call it 'logo'.
         //game.load.image( 'logo', 'assets/phaser.png' );
         game.load.image('map', 'assets/map.png');
-        game.load.spritesheet('cowboy', 'assets/cowboy.png', 50, 55);
+        game.load.image('cowboy', 'assets/cowboy.png');
         game.load.image('asteroid', 'assets/asteroid.png');
     }
     
@@ -53,7 +53,7 @@ window.onload = function() {
         //player.animations.add('turn', [4], 20, true);
         //player.animations.add('right', [5, 6, 7, 8], 10, true);
 
-        game.camera.follow(playre);
+        game.camera.follow(player);
 
         cursors = game.input.keyboard.createCursorKeys();
         jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -67,7 +67,7 @@ window.onload = function() {
             player.body.velocity.x = -150;
 
             if (facing != 'left') {
-                player.animations.play('left');
+                //player.animations.play('left');
                 facing = 'left';
             }
         }
@@ -75,24 +75,24 @@ window.onload = function() {
             player.body.velocity.x = 150;
 
             if (facing != 'right') {
-                player.animations.play('right');
+                //player.animations.play('right');
                 facing = 'right';
             }
         }
-        else {
-            if (facing != 'idle') {
-                player.animations.stop();
+        //else {
+           // if (facing != 'idle') {
+                //player.animations.stop();
 
-                if (facing == 'left') {
-                    player.frame = 0;
-                }
-                else {
-                    player.frame = 5;
-                }
+                //if (facing == 'left') {
+                    //player.frame = 0;
+                //}
+                //else {
+                   // player.frame = 5;
+               // }
 
-                facing = 'idle';
-            }
-        }
+                //facing = 'idle';
+            //}
+        //}
 
         if (jumpButton.isDown && player.body.onFloor() && game.time.now > jumpTimer) {
             player.body.velocity.y = -250;
