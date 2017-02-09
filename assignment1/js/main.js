@@ -26,7 +26,7 @@ window.onload = function() {
     var player;
     var bg;
     var cursors;
-    var jumpButton;
+    //var jumpButton;
     var shootBotton;
     var facing = 'left';
     var jumpTimer;
@@ -42,11 +42,12 @@ window.onload = function() {
 
         game.physics.arcade.gravity.y = 250;
 
-        player = game.add.sprite(400, 0, 'cowboy');
+        player = game.add.sprite(400, 400, 'cowboy');
         game.physics.enable(player, Phaser.Physics.ARCADE);
 
         player.body.bounce.y = 0.2;
         player.body.collideWorldBounds = true;
+        player.anchor.setTo(0.5, 0.5);
         //player.body.setSize(20, 32, 5, 16);
 
         //player.animations.add('left', [0, 1, 2, 3], 10, true);
@@ -56,7 +57,7 @@ window.onload = function() {
         game.camera.follow(player);
 
         cursors = game.input.keyboard.createCursorKeys();
-        jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
+        //jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         
     }
     
@@ -65,19 +66,9 @@ window.onload = function() {
 
         if (cursors.left.isDown) {
             player.body.velocity.x = -150;
-
-            if (facing != 'left') {
-                //player.animations.play('left');
-                facing = 'left';
-            }
         }
         else if (cursors.right.isDown) {
             player.body.velocity.x = 150;
-
-            if (facing != 'right') {
-                //player.animations.play('right');
-                facing = 'right';
-            }
         }
         //else {
            // if (facing != 'idle') {
