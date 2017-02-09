@@ -52,7 +52,7 @@ window.onload = function() {
         asteroids.physicsBodyType = Phaser.Physics.ARCADE;
 
         for (var y = 0; y < 1; y++) {
-            for (var x = 0; x < 20; x++) {
+            for (var x = 0; x < 15; x++) {
                 var asteroid = asteroids.create(50 + x * 48, y * 50, 'asteroid');
                 asteroid.name = 'asteroid' + x.toString() + y.toString();
                 asteroid.checkWorldBounds = true;
