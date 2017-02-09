@@ -85,9 +85,9 @@ window.onload = function() {
             //}
         //}
 
-        if (jumpButton.isDown && player.body.onFloor() && game.time.now > jumpTimer) {
-            player.body.velocity.y = -250;
-            jumpTimer = game.time.now + 750;
-        }
+        //if (jumpButton.isDown && player.body.onFloor() && game.time.now > jumpTimer) {
+            //player.body.velocity.y = -250;
+            //jumpTimer = game.time.now + 750;
+        //}
     }
 };
