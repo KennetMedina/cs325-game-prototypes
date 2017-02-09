@@ -42,7 +42,7 @@ window.onload = function() {
 
         game.physics.arcade.gravity.y = 250;
 
-        player = game.add.sprite(400, 345, 'cowboy');
+        player = game.add.sprite(400, 0, 'cowboy');
         game.physics.enable(player, Phaser.Physics.ARCADE);
 
         player.body.bounce.y = 0.2;
