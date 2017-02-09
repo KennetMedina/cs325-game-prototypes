@@ -57,7 +57,7 @@ window.onload = function() {
                 asteroid.name = 'asteroid' + x.toString() + y.toString();
                 asteroid.checkWorldBounds = true;
                 asteroid.events.onOutOfBounds.add(asteroidOut, this);
-                asteroid.body.velocity.y = 50 + Math.random() * 100;
+                asteroid.body.velocity.y = 10 + Math.random() * 100;
             }
         }
 
@@ -74,7 +74,7 @@ window.onload = function() {
         asteroid.reset(asteroid.x, 0);
 
         //  And give it a new random velocity
-        asteroid.body.velocity.y = 50 + Math.random() * 100;
+        asteroid.body.velocity.y = 10 + Math.random() * 100;
 
     }
     
