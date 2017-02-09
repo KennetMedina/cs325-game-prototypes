@@ -39,7 +39,7 @@ window.onload = function() {
 
         game.physics.arcade.gravity.y = 250;
 
-        player = game.add.sprite(400, 345, 'cowboy');
+        player = game.add.sprite(0, 400, 'cowboy');
         game.physics.enable(player, Phaser.Physics.ARCADE);
 
         player.body.bounce.y = 0.2;
@@ -51,8 +51,8 @@ window.onload = function() {
         asteroids.enableBody = true;
         asteroids.physicsBodyType = Phaser.Physics.ARCADE;
 
-        for (var y = 0; y < 2; y++) {
-            for (var x = 0; x < 100; x++) {
+        for (var y = 0; y < 1; y++) {
+            for (var x = 0; x < 20; x++) {
                 var asteroid = asteroids.create(50 + x * 48, y * 50, 'asteroid');
                 asteroid.name = 'asteroid' + x.toString() + y.toString();
                 asteroid.checkWorldBounds = true;
