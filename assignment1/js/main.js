@@ -19,7 +19,7 @@ window.onload = function() {
         // Load an image and call it 'logo'.
         //game.load.image( 'logo', 'assets/phaser.png' );
         game.load.image('map', 'assets/map.png');
-        game.load.spritesheet('cowboy', 'assets/cowboy.png', 32, 48);
+        game.load.spritesheet('cowboy', 'assets/cowboy.png', 50, 55);
         game.load.image('asteroid', 'assets/asteroid.png');
     }
     
@@ -49,9 +49,9 @@ window.onload = function() {
         player.body.collideWorldBounds = true;
         player.body.setSize(20, 32, 5, 16);
 
-        player.animations.add('left', [0, 1, 2, 3], 10, true);
-        player.animations.add('turn', [4], 20, true);
-        player.animations.add('right', [5, 6, 7, 8], 10, true);
+        //player.animations.add('left', [0, 1, 2, 3], 10, true);
+        //player.animations.add('turn', [4], 20, true);
+        //player.animations.add('right', [5, 6, 7, 8], 10, true);
 
         game.camera.follow(playre);
 
