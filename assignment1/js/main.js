@@ -18,7 +18,7 @@ window.onload = function() {
     function preload() {
         // Load an image and call it 'logo'.
         //game.load.image( 'logo', 'assets/phaser.png' );
-        game.load.image('background', 'assets/background.png');
+        game.load.image('map', 'assets/map.png');
         game.load.spritesheet('cowboy', 'assets/cowboy.png', 32, 48);
         game.load.image('asteroid', 'assets/asteroid.png');
     }
@@ -38,7 +38,7 @@ window.onload = function() {
         //game.stage.backgroundColor = '#000000';
 
         //bg =
-        game.add.sprite(0, 0, 800, 400, 'background');
+        game.add.sprite(0, 0, 800, 400, 'map');
         //bg.fixedToCamera = true;
 
         game.physics.arcade.gravity.y = 250;
