@@ -53,7 +53,7 @@ window.onload = function() {
 
         for (var y = 0; y < 4; y++) {
             for (var x = 0; x < 10; x++) {
-                var asteroid = asteroids.create(200 + x * 48, y * 50, 'asteroid');
+                var asteroid = asteroids.create(50 + x * 48, y * 50, 'asteroid');
                 asteroid.name = 'asteroid' + x.toString() + y.toString();
                 asteroid.checkWorldBounds = true;
                 asteroid.events.onOutOfBounds.add(asteroidOut, this);
