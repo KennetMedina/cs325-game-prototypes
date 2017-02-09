@@ -37,7 +37,7 @@ window.onload = function() {
 
         //game.stage.backgroundColor = '#000000';
 
-        bg = game.add.sprite(0, 0, 800, 400, 'background');
+        bg = game.add.sprite(0, 0, 'background');
         bg.fixedToCamera = true;
 
         game.physics.arcade.gravity.y = 250;
