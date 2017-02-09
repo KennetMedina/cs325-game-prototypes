@@ -26,10 +26,7 @@ window.onload = function() {
     var player;
     var bg;
     var cursors;
-    //var jumpButton;
-    var shootBotton;
-    var facing = 'left';
-    var jumpTimer;
+    var asteroids;
     
     function create() {
 
@@ -48,17 +45,37 @@ window.onload = function() {
         player.body.bounce.y = 0.2;
         player.body.collideWorldBounds = true;
         player.anchor.setTo(0.5, 0.5);
-        //player.body.setSize(20, 32, 5, 16);
 
-        //player.animations.add('left', [0, 1, 2, 3], 10, true);
-        //player.animations.add('turn', [4], 20, true);
-        //player.animations.add('right', [5, 6, 7, 8], 10, true);
 
+        asteroids = game.add.group();
+        asteroids.enableBody = true;
+        asteroids.physicsBodyType = Phaser.Physics.ARCADE;
+
+        for (var y = 0; y < 4; y++) {
+            for (var x = 0; x < 10; x++) {
+                var asteroid = asteroids.create(200 + x * 48, y * 50, 'asteroid');
+                asteroid.name = 'asteroid' + x.toString() + y.toString();
+                asteroid.checkWorldBounds = true;
+                asteroid.events.onOutOfBounds.add(asteroidOut, this);
+                asteroid.body.velocity.y = 50 + Math.random() * 200;
+            }
+        }
+
+        
         game.camera.follow(player);
 
         cursors = game.input.keyboard.createCursorKeys();
-        //jumpButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
         
+    }
+
+    function asteroidOut(asteroid) {
+
+        //  Move the asteroid to the top of the screen again
+        asteroid.reset(asteroid.x, 0);
+
+        //  And give it a new random velocity
+        asteroid.body.velocity.y = 50 + Math.random() * 200;
+
     }
     
     function update() {
@@ -70,24 +87,6 @@ window.onload = function() {
         else if (cursors.right.isDown) {
             player.body.velocity.x = 150;
         }
-        //else {
-           // if (facing != 'idle') {
-                //player.animations.stop();
-
-                //if (facing == 'left') {
-                    //player.frame = 0;
-                //}
-                //else {
-                   // player.frame = 5;
-               // }
-
-                //facing = 'idle';
-            //}
-        //}
-
-        //if (jumpButton.isDown && player.body.onFloor() && game.time.now > jumpTimer) {
-            //player.body.velocity.y = -250;
-            //jumpTimer = game.time.now + 750;
-        //}
+        
     }
 };
