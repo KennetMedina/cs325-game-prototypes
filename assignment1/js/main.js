@@ -13,7 +13,7 @@ window.onload = function() {
     
     "use strict";
     
-    var game = new Phaser.Game( 800, 600, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update } );
+    var game = new Phaser.Game( 800, 400, Phaser.CANVAS, 'game', { preload: preload, create: create, update: update } );
     
     function preload() {
         // Load an image and call it 'logo'.
@@ -37,9 +37,8 @@ window.onload = function() {
 
         //game.stage.backgroundColor = '#000000';
 
-        //bg =
-        game.add.sprite(0, 0, 800, 400, 'map');
-        //bg.fixedToCamera = true;
+        bg = game.add.tileSprite(0, 0, 800, 400, 'map');
+        bg.fixedToCamera = true;
 
         game.physics.arcade.gravity.y = 250;
 
