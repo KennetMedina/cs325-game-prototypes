@@ -120,6 +120,7 @@ window.onload = function() {
     function update() {
         game.physics.arcade.collide(player, layer);
         game.physics.arcade.collide(robots, layer);
+        game.physics.arcade.collide(hearts, layer);
 
         player.body.velocity.x = 0;
 
@@ -205,6 +206,7 @@ window.onload = function() {
         robot.kill();
 
         var heart = hearts.create(dx, dy, 'heart');
+        heart.body.setSize(4, 4, 4, 4);
 
         bullet.kill();
         
