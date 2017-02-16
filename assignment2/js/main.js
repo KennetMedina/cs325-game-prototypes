@@ -88,7 +88,7 @@ window.onload = function() {
         robots = game.add.group();
         robots.enableBody = true;
         robots.physicsBodyType = Phaser.Physics.ARCADE;
-        robots.body.collideWorldBounds = true;
+        //robots.body.collideWorldBounds = true;
         createRobots();
         
         //create hearts
