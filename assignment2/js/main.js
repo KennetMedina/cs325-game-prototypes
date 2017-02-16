@@ -193,7 +193,7 @@ window.onload = function() {
         }
     }
 
-    function colletHeart(player, heart) {
+    function collectHeart(player, heart) {
         heart.kill();
     }
 
