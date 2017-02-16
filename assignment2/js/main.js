@@ -211,7 +211,7 @@ window.onload = function() {
             scoreText.text = scoreString + score;
 
             stateText.text = " You Won, \n Click to restart";
-            scoreText.fixedToCamera = true;
+            stateText.fixedToCamera = true;
             stateText.visible = true;
 
             //the "click to restart" handler
