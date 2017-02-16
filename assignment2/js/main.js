@@ -42,7 +42,7 @@ window.onload = function() {
         
         game.physics.startSystem(Phaser.Physics.ARCADE);
 
-        game.stage.backgroundColor = '#000000';
+        //game.stage.backgroundColor = '#000000';
 
         bg = game.add.tileSprite(0, 0, 800, 600, 'space');
         bg.fixedToCamera = true;
