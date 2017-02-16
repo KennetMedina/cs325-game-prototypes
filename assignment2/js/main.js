@@ -196,6 +196,9 @@ window.onload = function() {
 
     function collectHeart(player, heart) {
         heart.kill();
+        //  Increase the score
+        score += 20;
+        scoreText.text = scoreString + score;
     }
 
     function collisionHandler(bullet, robot) {
@@ -206,14 +209,12 @@ window.onload = function() {
         robot.kill();
 
         var heart = hearts.create(dx, dy, 'heart');
-        heart.body.setSize(4, 4, 4, 4);
+        heart.scale.setTo(0.5, 0.5);
 
         bullet.kill();
         
 
-        //  Increase the score
-        score += 20;
-        scoreText.text = scoreString + score;
+        
 
         //  And drop an organ
         
