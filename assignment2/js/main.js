@@ -16,29 +16,77 @@ window.onload = function() {
     var game = new Phaser.Game( 800, 600, Phaser.AUTO, 'game', { preload: preload, create: create, update: update } );
     
     function preload() {
-        // Load an image and call it 'logo'.
-        game.load.image( 'logo', 'assets/phaser.png' );
+        
+        game.load.tilemap('level1', 'assets/level1.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.image('tiles-1', 'assets/tiles-1.png');
+        game.load.spritesheet('soldier', 'assets/soldier.png', 51, 55);
+        game.load.spritesheet('robot', 'assets/robot.png', 64, 64);
+        game.load.image('heart', 'assets/heart.png');
+        game.load.image('eye', 'assets/eye.png');
+        game.load.image('bullet', 'assets/bullet.png');
+        game.load.image('space', 'assets/space.png');
     }
     
-    var bouncy;
+    var map;
+    var tileset;
+    var layer;
+    var player;
+    var robots;
+    var facing = 'left';
+    var jumpTimer = 0;
+    var cursors;
+    var shootButton;
+    var bg;
     
     function create() {
-        // Create a sprite at the center of the screen using the 'logo' image.
-        bouncy = game.add.sprite( game.world.centerX, game.world.centerY, 'logo' );
-        // Anchor the sprite at its center, as opposed to its top-left corner.
-        // so it will be truly centered.
-        bouncy.anchor.setTo( 0.5, 0.5 );
         
-        // Turn on the arcade physics engine for this sprite.
-        game.physics.enable( bouncy, Phaser.Physics.ARCADE );
-        // Make it bounce off of the world bounds.
-        bouncy.body.collideWorldBounds = true;
-        
-        // Add some text using a CSS style.
-        // Center it in X, and position its top 15 pixels from the top of the world.
-        var style = { font: "25px Verdana", fill: "#9999ff", align: "center" };
-        var text = game.add.text( game.world.centerX, 15, "Build something amazing.", style );
-        text.anchor.setTo( 0.5, 0.0 );
+        game.physics.startSystem(Phaser.Physics.ARCADE);
+
+        game.stage.backgroundColor = '#000000';
+
+        bg = game.add.tileSprite(0, 0, 800, 600, 'space');
+        bg.fixedToCamera = true;
+
+        //create tilemap
+        map = game.add.tilemap('level1');
+
+        map.addTilesetImage('tiles-1');
+
+        map.setCollisionByExclusion([13, 14, 15, 16, 46, 47, 48, 49, 50, 51]);
+
+        layer = map.createLayer('Tile Layer 1');
+
+        layer.resizeWorld();
+
+        game.physics.arcade.gravity.y = 250;
+
+        //create player
+        player = game.add.sprite(32, 32, 'soldier');
+        game.physics.enable(player, Phaser.Physics.ARCADE);
+
+        player.body.bounce.y = 0.2;
+        player.body.collideWorldBounds = true;
+        player.body.setSize(20, 32, 5, 16);
+
+        player.animations.add('left', [1, 16, 17, 18, 19, 20, 21, 22, 23], 10, true);
+        player.animations.add('turn', [7, 6], 20, true);
+        player.animations.add('right', [0, 8, 9, 10, 11, 12, 13, 14, 15], 10, true);
+        player.animations.add('down', [3, 2], 20, true);
+        player.animations.add('up', [5, 4], 10, true);
+
+        game.camera.follow(player);
+
+        //create robots
+        robots = game.add.group();
+        robots.enableBody = true;
+        robots.physicsBodyType = Phaser.Physics.ARCADE;
+
+        for (var y = 0; y < 10; y++) {
+            var robot = robots.create(game.world.randomX, game.world.randomY, 'robot');       
+        }
+
+        cursors = game.input.keyboard.createCursorKeys();
+        shootButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     }
     
     function update() {
