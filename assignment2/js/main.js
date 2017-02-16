@@ -200,10 +200,11 @@ window.onload = function() {
     }
 
     function collectHeart(player, heart) {
-        heart.kill();
+        
         //  Increase the score
         score += 10;
         scoreText.text = scoreString + score;
+        heart.kill();
 
         if (hearts.countLiving() === 0 && robots.countLiving() === 0) {
             //score += 1000;
