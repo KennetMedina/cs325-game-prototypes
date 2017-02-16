@@ -79,8 +79,8 @@ window.onload = function() {
         player.animations.add('left', [1, 16, 17, 18, 19, 20, 21, 22, 23], 10, true);
         player.animations.add('turn', [7, 6], 20, true);
         player.animations.add('right', [0, 8, 9, 10, 11, 12, 13, 14, 15], 10, true);
-        player.animations.add('down', [3, 2], 20, true);
-        player.animations.add('up', [5, 4], 10, true);
+        //player.animations.add('down', [3, 2], 20, true);
+        //player.animations.add('up', [5, 4], 10, true);
 
         game.camera.follow(player);
 
@@ -95,7 +95,7 @@ window.onload = function() {
         bullets = game.add.group();
         bullets.enableBody = true;
         bullets.physicsBodyType = Phaser.Physics.ARCADE;
-        bullets.createMultiple(30, 'bullet');
+        bullets.createMultiple(300, 'bullet');
         bullets.setAll('anchor.x', 0.5);
         bullets.setAll('anchor.y', 1);
         bullets.setAll('bulletOOB', true);
@@ -147,7 +147,7 @@ window.onload = function() {
         if (cursors.up.isDown && player.body.onFloor() && game.time.now > jumpTimer) {
             player.body.velocity.y = -250;
             jumpTimer = game.time.now + 750;
-            player.animations.play('up');
+            //player.animations.play('up');
         }
 
         if (shootButton.isDown) {
@@ -157,7 +157,7 @@ window.onload = function() {
                     var bullet = bullets.getFirstExists(false);
                     if (bullet) {
                         //  And fire it
-                        bullet.reset(player.x - 8, player.y + 6);
+                        bullet.reset(player.x , player.y );
                         bullet.body.velocity.x = -400;
                         bulletTime = game.time.now + 200;
                     }
@@ -166,7 +166,7 @@ window.onload = function() {
                     var bullet = bullets.getFirstExists(false);
                     if (bullet) {
                         //  And fire it
-                        bullet.reset(player.x , player.y + 6);
+                        bullet.reset(player.x , player.y );
                         bullet.body.velocity.x = 400;
                         bulletTime = game.time.now + 200;
                     }
