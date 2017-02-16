@@ -108,7 +108,7 @@ window.onload = function() {
         bullets.setAll('checkWorldBounds', true);
 
         //  The score
-        scoreText = game.add.text(10, 10, scoreString + score + 'out of 10', { font: '24px Arial', fill: '#fff' });
+        scoreText = game.add.text(10, 10, scoreString + score + ' out of 10', { font: '24px Arial', fill: '#fff' });
         scoreText.fixedToCamera = true;
 
         //  Text
@@ -203,12 +203,12 @@ window.onload = function() {
         
         //  Increase the score
         score += 10;
-        scoreText.text = scoreString + score + 'out of 10';
+        scoreText.text = scoreString + score + ' out of 10';
         heart.kill();
 
         if (hearts.countLiving() === 0 && robots.countLiving() === 0) {
             //score += 1000;
-            scoreText.text = scoreString + score + 'out of 10';
+            scoreText.text = scoreString + score + ' out of 10';
 
             stateText.text = " You Won, \n Click to restart";
             stateText.fixedToCamera = true;
@@ -244,7 +244,7 @@ window.onload = function() {
 
         //  A new level starts
         score = 0;
-        scoreText.text = scoreString + score + 'out of 10';
+        scoreText.text = scoreString + score + ' out of 10';
         bulletTime = 0;
 
         //  And brings the aliens back from the dead :)
