@@ -147,18 +147,29 @@ window.onload = function() {
         if (cursors.up.isDown && player.body.onFloor() && game.time.now > jumpTimer) {
             player.body.velocity.y = -250;
             jumpTimer = game.time.now + 750;
+            player.animation.play('up');
         }
 
         if (shootButton.isDown) {
             if (game.time.now >= bulletTime) {
-                //  Grab the first bullet we can from the pool
-                var bullet = bullets.getFirstExists(false);
-
-                if (bullet) {
-                    //  And fire it
-                    bullet.reset(player.x - 8, player.y + 6);
-                    bullet.body.velocity.x = -400;
-                    bulletTime = game.time.now + 200;
+                if (facing == 'left') {
+                    //  Grab the first bullet we can from the pool
+                    var bullet = bullets.getFirstExists(false);
+                    if (bullet) {
+                        //  And fire it
+                        bullet.reset(player.x - 8, player.y + 6);
+                        bullet.body.velocity.x = -400;
+                        bulletTime = game.time.now + 200;
+                    }
+                }
+                else if (facing == 'right'){
+                    var bullet = bullets.getFirstExists(false);
+                    if (bullet) {
+                        //  And fire it
+                        bullet.reset(player.x , player.y + 6);
+                        bullet.body.velocity.x = 400;
+                        bulletTime = game.time.now + 200;
+                    }
                 }
             }
         }
