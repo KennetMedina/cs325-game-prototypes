@@ -91,5 +91,6 @@ window.onload = function() {
     
     function update() {
         game.physics.arcade.collide(player, layer);
+        game.physics.arcade.collide(robots, layer);
     }
 };
