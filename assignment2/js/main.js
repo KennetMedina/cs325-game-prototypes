@@ -101,8 +101,8 @@ window.onload = function() {
         bullets.enableBody = true;
         bullets.physicsBodyType = Phaser.Physics.ARCADE;
         bullets.createMultiple(300, 'bullet');
-        bullets.setAll('anchor.x', 1);
-        bullets.setAll('anchor.y', 1);
+        bullets.setAll('anchor.x', 0);
+        bullets.setAll('anchor.y', 0);
         bullets.setAll('bulletOOB', true);
         bullets.setAll('checkWorldBounds', true);
 
@@ -201,6 +201,17 @@ window.onload = function() {
         //  Increase the score
         score += 10;
         scoreText.text = scoreString + score;
+
+        if (hearts.countLiving() == 0) {
+            //score += 1000;
+            scoreText.text = scoreString + score;
+
+            stateText.text = " You Won, \n Click to restart";
+            stateText.visible = true;
+
+            //the "click to restart" handler
+            game.input.onTap.addOnce(restart, this);
+        }
     }
 
     function collisionHandler(bullet, robot) {
@@ -216,16 +227,7 @@ window.onload = function() {
 
         bullet.kill();
                           
-        if (hearts.countLiving() == 0) {
-            //score += 1000;
-            scoreText.text = scoreString + score;
-
-            stateText.text = " You Won, \n Click to restart";
-            stateText.visible = true;
-
-            //the "click to restart" handler
-            game.input.onTap.addOnce(restart, this);
-        }
+        
 
     }
 
