@@ -157,7 +157,7 @@ window.onload = function() {
                     var bullet = bullets.getFirstExists(false);
                     if (bullet) {
                         //  And fire it
-                        bullet.reset(player.x , player.y );
+                        bullet.reset(player.x , player.y + 25);
                         bullet.body.velocity.x = -400;
                         bulletTime = game.time.now + 200;
                     }
@@ -166,7 +166,7 @@ window.onload = function() {
                     var bullet = bullets.getFirstExists(false);
                     if (bullet) {
                         //  And fire it
-                        bullet.reset(player.x , player.y );
+                        bullet.reset(player.x + 50 , player.y + 25);
                         bullet.body.velocity.x = 400;
                         bulletTime = game.time.now + 200;
                     }
