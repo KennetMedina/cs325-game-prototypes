@@ -147,7 +147,7 @@ window.onload = function() {
         if (cursors.up.isDown && player.body.onFloor() && game.time.now > jumpTimer) {
             player.body.velocity.y = -250;
             jumpTimer = game.time.now + 750;
-            player.animation.play('up');
+            player.animations.play('up');
         }
 
         if (shootButton.isDown) {
