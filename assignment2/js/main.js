@@ -88,6 +88,7 @@ window.onload = function() {
         robots = game.add.group();
         robots.enableBody = true;
         robots.physicsBodyType = Phaser.Physics.ARCADE;
+        robots.body.collideWorldBounds = true;
         createRobots();
         
         //create hearts
@@ -106,7 +107,8 @@ window.onload = function() {
         bullets.setAll('checkWorldBounds', true);
 
         //  The score
-        scoreText = game.add.text(player.x, player.y - 10, scoreString + score, { font: '24px Arial', fill: '#fff' });
+        scoreText = game.add.text(10, 10, scoreString + score, { font: '24px Arial', fill: '#fff' });
+        scoreText.fixedToCamera = true;
 
         //  Text
         stateText = game.add.text(game.world.centerX, game.world.centerY, ' ', { font: '84px Arial', fill: '#fff' });
@@ -197,7 +199,7 @@ window.onload = function() {
     function collectHeart(player, heart) {
         heart.kill();
         //  Increase the score
-        score += 20;
+        score += 10;
         scoreText.text = scoreString + score;
     }
 
@@ -208,19 +210,14 @@ window.onload = function() {
 
         robot.kill();
 
+        //  And drop a heart
         var heart = hearts.create(dx, dy, 'heart');
         heart.scale.setTo(0.25, 0.25);
 
         bullet.kill();
-        
-
-        
-
-        //  And drop an organ
-        
-
-        if (robots.countLiving() == 0) {
-            score += 1000;
+                          
+        if (hearts.countLiving() == 0) {
+            //score += 1000;
             scoreText.text = scoreString + score;
 
             stateText.text = " You Won, \n Click to restart";
