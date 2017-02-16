@@ -36,6 +36,7 @@ window.onload = function() {
     var bulletTime = 0;
     var hearts;
     var eye;
+    var isIdle = true;
     var facing = 'left';
     var jumpTimer = 0;
     var cursors;
@@ -129,31 +130,33 @@ window.onload = function() {
         if (cursors.left.isDown) {
             player.body.velocity.x = -150;
 
-            if (facing != 'left') {
+            if (facing !== 'left') {
                 player.animations.play('left');
                 facing = 'left';
+                isIdle = false;
             }
         }
         else if (cursors.right.isDown) {
             player.body.velocity.x = 150;
 
-            if (facing != 'right') {
+            if (facing !== 'right') {
                 player.animations.play('right');
                 facing = 'right';
+                isIdle = false;
             }
         }
         else {
-            if (facing != 'idle') {
+            if (isIdle === true) {
                 player.animations.stop();
 
-                if (facing == 'left') {
-                    player.frame = 1;
-                }
-                else {
+                if (facing === 'right') {
                     player.frame = 0;
                 }
+                else {
+                    player.frame = 1;
+                }
 
-                facing = 'idle';
+                isIdle = true;
             }
         }
         if (cursors.up.isDown && player.body.onFloor() && game.time.now > jumpTimer) {
@@ -239,6 +242,7 @@ window.onload = function() {
 
         //  A new level starts
         score = 0;
+        scoreText.text = scoreString + score;
         bulletTime = 0;
 
         //  And brings the aliens back from the dead :)
