@@ -34,7 +34,7 @@ window.onload = function() {
     var robots;
     var bullets;
     var bulletTime = 0;
-    var heart;
+    var hearts;
     var eye;
     var facing = 'left';
     var jumpTimer = 0;
@@ -90,19 +90,28 @@ window.onload = function() {
         robots.physicsBodyType = Phaser.Physics.ARCADE;
         createRobots();
         
+        //create hearts
+        hearts = game.add.group();
+        hearts.enableBody = true;
+        hearts.physicsBodyType = Phaser.Physics.ARCADE;
 
         //  Our bullets
         bullets = game.add.group();
         bullets.enableBody = true;
         bullets.physicsBodyType = Phaser.Physics.ARCADE;
         bullets.createMultiple(300, 'bullet');
-        bullets.setAll('anchor.x', 0.5);
+        bullets.setAll('anchor.x', 1);
         bullets.setAll('anchor.y', 1);
         bullets.setAll('bulletOOB', true);
         bullets.setAll('checkWorldBounds', true);
 
         //  The score
-        scoreText = game.add.text(10, 10, scoreString + score, { font: '34px Arial', fill: '#fff' });
+        scoreText = game.add.text(player.x, player.y - 10, scoreString + score, { font: '24px Arial', fill: '#fff' });
+
+        //  Text
+        stateText = game.add.text(game.world.centerX, game.world.centerY, ' ', { font: '84px Arial', fill: '#fff' });
+        stateText.anchor.setTo(0.5, 0.5);
+        stateText.visible = false;
 
         cursors = game.input.keyboard.createCursorKeys();
         shootButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -175,6 +184,7 @@ window.onload = function() {
         }
 
         game.physics.arcade.overlap(bullets, robots, collisionHandler, null, this);
+        game.physics.arcade.overlap(player, hearts, collectHeart, null, this);
     }
 
     function createRobots() {
@@ -183,11 +193,21 @@ window.onload = function() {
         }
     }
 
+    function colletHeart(player, heart) {
+        heart.kill();
+    }
+
     function collisionHandler(bullet, robot) {
 
-        //  When a bullet hits an alien we kill them both
-        bullet.kill();
+        var dx = robot.x;
+        var dy = robot.y;
+
         robot.kill();
+
+        var heart = hearts.create(dx, dy, 'heart');
+
+        bullet.kill();
+        
 
         //  Increase the score
         score += 20;
