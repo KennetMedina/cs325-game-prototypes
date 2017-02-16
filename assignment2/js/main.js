@@ -146,7 +146,7 @@ window.onload = function() {
             }
         }
         else {
-            if (isIdle === true) {
+            if (isIdle !== true) {
                 player.animations.stop();
 
                 if (facing === 'right') {
@@ -167,7 +167,7 @@ window.onload = function() {
 
         if (shootButton.isDown) {
             if (game.time.now >= bulletTime) {
-                if (facing == 'left') {
+                if (facing === 'left') {
                     //  Grab the first bullet we can from the pool
                     var bullet = bullets.getFirstExists(false);
                     if (bullet) {
@@ -177,7 +177,7 @@ window.onload = function() {
                         bulletTime = game.time.now + 200;
                     }
                 }
-                else if (facing == 'right'){
+                else if (facing === 'right'){
                     var bullet = bullets.getFirstExists(false);
                     if (bullet) {
                         //  And fire it
@@ -205,7 +205,7 @@ window.onload = function() {
         score += 10;
         scoreText.text = scoreString + score;
 
-        if (hearts.countLiving() == 0) {
+        if (hearts.countLiving() === 0 && robots.countLiving() === 0) {
             //score += 1000;
             scoreText.text = scoreString + score;
 
