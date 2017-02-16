@@ -101,6 +101,9 @@ window.onload = function() {
         bullets.setAll('bulletOOB', true);
         bullets.setAll('checkWorldBounds', true);
 
+        //  The score
+        scoreText = game.add.text(10, 10, scoreString + score, { font: '34px Arial', fill: '#fff' });
+
         cursors = game.input.keyboard.createCursorKeys();
         shootButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
     }
