@@ -32,11 +32,19 @@ window.onload = function() {
     var layer;
     var player;
     var robots;
+    var bullets;
+    var bulletTime = 0;
+    var heart;
+    var eye;
     var facing = 'left';
     var jumpTimer = 0;
     var cursors;
     var shootButton;
     var bg;
+    var score = 0;
+    var scoreString = 'Score : ';
+    var scoreText;
+    var stateText;
     
     function create() {
         
@@ -80,10 +88,18 @@ window.onload = function() {
         robots = game.add.group();
         robots.enableBody = true;
         robots.physicsBodyType = Phaser.Physics.ARCADE;
+        createRobots();
+        
 
-        for (var y = 0; y < 10; y++) {
-            var robot = robots.create(game.world.randomX, game.world.randomY, 'robot');       
-        }
+        //  Our bullets
+        bullets = game.add.group();
+        bullets.enableBody = true;
+        bullets.physicsBodyType = Phaser.Physics.ARCADE;
+        bullets.createMultiple(30, 'bullet');
+        bullets.setAll('anchor.x', 0.5);
+        bullets.setAll('anchor.y', 1);
+        bullets.setAll('bulletOOB', true);
+        bullets.setAll('checkWorldBounds', true);
 
         cursors = game.input.keyboard.createCursorKeys();
         shootButton = game.input.keyboard.addKey(Phaser.Keyboard.SPACEBAR);
@@ -92,5 +108,112 @@ window.onload = function() {
     function update() {
         game.physics.arcade.collide(player, layer);
         game.physics.arcade.collide(robots, layer);
+
+        player.body.velocity.x = 0;
+
+        if (cursors.left.isDown) {
+            player.body.velocity.x = -150;
+
+            if (facing != 'left') {
+                player.animations.play('left');
+                facing = 'left';
+            }
+        }
+        else if (cursors.right.isDown) {
+            player.body.velocity.x = 150;
+
+            if (facing != 'right') {
+                player.animations.play('right');
+                facing = 'right';
+            }
+        }
+        else {
+            if (facing != 'idle') {
+                player.animations.stop();
+
+                if (facing == 'left') {
+                    player.frame = 1;
+                }
+                else {
+                    player.frame = 0;
+                }
+
+                facing = 'idle';
+            }
+        }
+        if (cursors.up.isDown && player.body.onFloor() && game.time.now > jumpTimer) {
+            player.body.velocity.y = -250;
+            jumpTimer = game.time.now + 750;
+        }
+
+        if (shootButton.isDown) {
+            if (game.time.now >= bulletTime) {
+                //  Grab the first bullet we can from the pool
+                var bullet = bullets.getFirstExists(false);
+
+                if (bullet) {
+                    //  And fire it
+                    bullet.reset(player.x - 8, player.y + 6);
+                    bullet.body.velocity.x = -400;
+                    bulletTime = game.time.now + 200;
+                }
+            }
+        }
+
+        game.physics.arcade.overlap(bullets, robots, collisionHandler, null, this);
+    }
+
+    function createRobots() {
+        for (var y = 0; y < 10; y++) {
+            var robot = robots.create(game.world.randomX, game.world.randomY, 'robot');
+        }
+    }
+
+    function collisionHandler(bullet, robot) {
+
+        //  When a bullet hits an alien we kill them both
+        bullet.kill();
+        robot.kill();
+
+        //  Increase the score
+        score += 20;
+        scoreText.text = scoreString + score;
+
+        //  And drop an organ
+        
+
+        if (robots.countLiving() == 0) {
+            score += 1000;
+            scoreText.text = scoreString + score;
+
+            stateText.text = " You Won, \n Click to restart";
+            stateText.visible = true;
+
+            //the "click to restart" handler
+            game.input.onTap.addOnce(restart, this);
+        }
+
+    }
+
+    function bulletOOB(bullet) {
+        bullet.kill();
+    }
+
+    function restart() {
+
+        //  A new level starts
+        score = 0;
+        bulletTime = 0;
+
+        //  And brings the aliens back from the dead :)
+        robots.removeAll();
+        createRobots();
+
+        //resets the player
+        player.reset();
+        //hides the text
+        stateText.visible = false;
+        //scoreText.text = scoreString + score;
+
     }
 };
