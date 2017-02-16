@@ -202,7 +202,7 @@ window.onload = function() {
     function collectHeart(player, heart) {
         
         //  Increase the score
-        score += 10;
+        score += 1;
         scoreText.text = scoreString + score + ' out of 10';
         heart.kill();
 
