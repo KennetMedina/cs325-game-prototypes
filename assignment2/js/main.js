@@ -209,7 +209,7 @@ window.onload = function() {
         robot.kill();
 
         var heart = hearts.create(dx, dy, 'heart');
-        heart.scale.setTo(0.5, 0.5);
+        heart.scale.setTo(0.25, 0.25);
 
         bullet.kill();
         
