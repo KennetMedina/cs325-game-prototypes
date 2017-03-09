@@ -205,7 +205,7 @@ window.onload = function() {
 
         game.physics.arcade.overlap(bullets, robots, collisionHandler, null, this);
         game.physics.arcade.overlap(player, hearts, collectHeart, null, this);
-        game.physics.arcade.overlap(bullets, layer, bulletHitWalls, null, this);
+        //game.physics.arcade.overlap(bullets, layer, bulletHitWalls, null, this);
     }
 
     function createRobots() {
