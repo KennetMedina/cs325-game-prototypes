@@ -80,7 +80,7 @@ window.onload = function() {
 
         layer.resizeWorld();
 
-        game.physics.arcade.gravity.y = 200;
+        game.physics.arcade.gravity.y = 250;
 
         //create player
         player = game.add.sprite(32, 32, 'soldier');
@@ -205,7 +205,7 @@ window.onload = function() {
 
         game.physics.arcade.overlap(bullets, robots, collisionHandler, null, this);
         game.physics.arcade.overlap(player, hearts, collectHeart, null, this);
-        game.physics.arcade.overlap(bullets, layer, function (bullet, layer) { bullet.kill(); }, null, this);
+        game.physics.arcade.overlap(bullets, layer, bulletHitWalls, null, this);
     }
 
     function createRobots() {
@@ -249,6 +249,10 @@ window.onload = function() {
                           
         
 
+    }
+
+    function bulletHitWalls(bullet, layer) {
+        bullet.kill();
     }
 
     function bulletOOB(bullet) {
