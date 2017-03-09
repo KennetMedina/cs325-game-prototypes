@@ -24,6 +24,7 @@ window.onload = function() {
         game.load.spritesheet('soldier', 'assets/soldier.png', 51, 55);
         game.load.spritesheet('robot', 'assets/robot.png', 64, 64);
         game.load.image('heart', 'assets/heart.png');
+        game.load.image('brain', 'assets/brain.png');
         game.load.image('eye', 'assets/eye.png');
         game.load.image('bullet', 'assets/bullet.png');
         game.load.image('space', 'assets/space.png');
@@ -37,7 +38,8 @@ window.onload = function() {
     var bullets;
     var bulletTime = 0;
     var hearts;
-    var eye;
+    var brains;
+    var eyes;
     var isIdle = true;
     var facing = 'left';
     var jumpTimer = 0;
@@ -45,7 +47,7 @@ window.onload = function() {
     var shootButton;
     var bg;
     var score = 0;
-    var scoreString = 'Hearts recovered : ';
+    var scoreString = 'Organs recovered : ';
     var scoreText;
     var stateText;
     
@@ -109,6 +111,16 @@ window.onload = function() {
         hearts = game.add.group();
         hearts.enableBody = true;
         hearts.physicsBodyType = Phaser.Physics.ARCADE;
+
+        //create brains
+        brains = game.add.group();
+        brains.enableBody = true;
+        brains.physicsBodyType = Phaser.Physics.ARCADE;
+
+        //create eyes
+        eyes = game.add.group();
+        eyes.enableBody = true;
+        eyes.physicsBodyType = Phaser.Physics.ARCADE;
 
         //  Our bullets
         bullets = game.add.group();
@@ -234,6 +246,42 @@ window.onload = function() {
         }
     }
 
+    function collectBrain(player, brain) {
+
+        score += 1;
+        scoreText.text = scoreString + score + ' out of 10';
+        brain.kill();
+
+        if(brains.countLiving() === 0 && robots.countLiving() === 0) {
+            scoreText.text = scoreString + score + ' out of 10';
+
+            stateText.text = " You Won, \n Click to restart";
+            stateText.fixedToCamera = true;
+            stateText.visible = true;
+
+            //the "click to restart" handler
+            game.input.onTap.addOnce(restart, this);
+        }
+    }
+
+    function collectEye(player, eye) {
+
+        score += 1;
+        scoreText.text = scoreString + score + ' out of 10';
+        eye.kill();
+
+        if (eyes.countLiving() === 0 && robots.countLiving() === 0) {
+            scoreText.text = scoreString + score + ' out of 10';
+
+            stateText.text = " You Won, \n Click to restart";
+            stateText.fixedToCamera = true;
+            stateText.visible = true;
+
+            //the "click to restart" handler
+            game.input.onTap.addOnce(restart, this);
+        }
+    }
+
     function collisionHandler(bullet, robot) {
 
         var dx = robot.x;
@@ -241,14 +289,23 @@ window.onload = function() {
 
         robot.kill();
 
-        //  And drop a heart
-        var heart = hearts.create(dx, dy, 'heart');
-        heart.scale.setTo(0.25, 0.25);
+        var randomOrgan = Math.random() * (4 - 1) + 1;
 
-        bullet.kill();
-                          
+        //  And drop an organ
+        if (randomOrgan === 1) {
+            var heart = hearts.create(dx, dy, 'heart');
+            heart.scale.setTo(0.25, 0.25);
+        }
+        if (randomOrgan === 2) {
+            var brain = brains.create(dx, dy, 'brain');
+            heart.scale.setTo(0.25, 0.25);
+        }
+        if (randomOrgan === 3) {
+            var eye = eyes.create(dx, dy, 'eye');
+            eye.scale.setTo(0.25, 0.25);
+        }
         
-
+        bullet.kill();
     }
 
     function bulletHitWalls(bullet, layer) {
