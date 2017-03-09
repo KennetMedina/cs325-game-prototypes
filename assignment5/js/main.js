@@ -62,7 +62,7 @@ window.onload = function() {
         //add music
         music = game.add.audio('battleTheme');
         music.play();
-        game.sound.loop = true;
+        music.loop = true;
 
 
         bg = game.add.tileSprite(0, 0, 800, 600, 'space');
