@@ -60,9 +60,9 @@ window.onload = function() {
         //game.stage.backgroundColor = '#000000';
 
         //add music
-        music = game.add.audio('battleTheme');
+        music = game.add.audio('battleTheme', 0.8, true);
         music.play();
-        music.loop = true;
+        //music.loop = true;
 
 
         bg = game.add.tileSprite(0, 0, 800, 600, 'space');
