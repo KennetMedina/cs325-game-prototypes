@@ -28,6 +28,7 @@ window.onload = function() {
         game.load.image('eye', 'assets/eye.png');
         game.load.image('bullet', 'assets/bullet.png');
         game.load.image('space', 'assets/space.png');
+        game.load.audio('battleTheme', 'assets/battleThemeA.mp3');
     }
     
     var map;
@@ -50,12 +51,18 @@ window.onload = function() {
     var scoreString = 'Organs recovered : ';
     var scoreText;
     var stateText;
+    var music;
     
     function create() {
         
         game.physics.startSystem(Phaser.Physics.ARCADE);
 
         //game.stage.backgroundColor = '#000000';
+
+        //add music
+        music = game.add.audio('battleTheme');
+        music.play();
+
 
         bg = game.add.tileSprite(0, 0, 800, 600, 'space');
         bg.fixedToCamera = true;
@@ -217,6 +224,8 @@ window.onload = function() {
 
         game.physics.arcade.overlap(bullets, robots, collisionHandler, null, this);
         game.physics.arcade.overlap(player, hearts, collectHeart, null, this);
+        game.physics.arcade.overlap(player, brains, collectBrain, null, this);
+        game.physics.arcade.overlap(player, eyes, collectEye, null, this);
         //game.physics.arcade.overlap(bullets, layer, bulletHitWalls, null, this);
     }
 
@@ -294,15 +303,15 @@ window.onload = function() {
         //  And drop an organ
         if (randomOrgan === 3) {
             var heart = hearts.create(dx, dy, 'heart');
-            heart.scale.setTo(0.25, 0.25);
+            heart.scale.setTo(0.20, 0.20);
         }
         if (randomOrgan === 4) {
             var brain = brains.create(dx, dy, 'brain');
-            brain.scale.setTo(0.25, 0.25);
+            brain.scale.setTo(0.20, 0.20);
         }
         if (randomOrgan === 5) {
             var eye = eyes.create(dx, dy, 'eye');
-            eye.scale.setTo(0.25, 0.25);
+            eye.scale.setTo(0.15, 0.15);
         }
         
         bullet.kill();
