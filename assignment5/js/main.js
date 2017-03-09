@@ -64,7 +64,7 @@ window.onload = function() {
 
         map.addTilesetImage('wall_tiles');
 
-        //map.setCollisionByExclusion([13, 14, 15, 16, 46, 47, 48, 49, 50, 51]);
+        map.setCollisionByExclusion([13, 14, 15, 16, 46, 47, 48, 49, 50, 51]);
 
         layer = map.createLayer('Tile Layer 2');
 
