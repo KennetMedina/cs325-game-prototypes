@@ -298,7 +298,7 @@ window.onload = function() {
         }
         if (randomOrgan === 4) {
             var brain = brains.create(dx, dy, 'brain');
-            heart.scale.setTo(0.25, 0.25);
+            brain.scale.setTo(0.25, 0.25);
         }
         if (randomOrgan === 5) {
             var eye = eyes.create(dx, dy, 'eye');
