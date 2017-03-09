@@ -80,7 +80,7 @@ window.onload = function() {
 
         layer.resizeWorld();
 
-        game.physics.arcade.gravity.y = 250;
+        game.physics.arcade.gravity.y = 350;
 
         //create player
         player = game.add.sprite(32, 32, 'soldier');
@@ -137,6 +137,7 @@ window.onload = function() {
         game.physics.arcade.collide(player, layer);
         game.physics.arcade.collide(robots, layer);
         game.physics.arcade.collide(hearts, layer);
+        game.physics.arcade.collide(bullets, layer);
 
         player.body.velocity.x = 0;
 
