@@ -17,8 +17,10 @@ window.onload = function() {
     
     function preload() {
         
-        game.load.tilemap('level1', 'assets/level1.json', null, Phaser.Tilemap.TILED_JSON);
-        game.load.image('tiles-1', 'assets/tiles-1.png');
+        //game.load.tilemap('level1', 'assets/level1.json', null, Phaser.Tilemap.TILED_JSON);
+        //game.load.image('tiles-1', 'assets/tiles-1.png');
+        game.load.tilemap('level2', 'assets/level2.json', null, Phaser.Tilemap.TILED_JSON);
+        game.load.image('wall_tiles', 'assets/tiles-2.png');
         game.load.spritesheet('soldier', 'assets/soldier.png', 51, 55);
         game.load.spritesheet('robot', 'assets/robot.png', 64, 64);
         game.load.image('heart', 'assets/heart.png');
@@ -57,6 +59,16 @@ window.onload = function() {
         bg.fixedToCamera = true;
 
         //create tilemap
+
+        map = game.add.tilemap('level2');
+
+        map.addTilesetImage('wall_tiles');
+
+        //map.setCollisionByExclusion([13, 14, 15, 16, 46, 47, 48, 49, 50, 51]);
+
+        layer = map.createLayer('Tile Layer 2');
+
+        /*
         map = game.add.tilemap('level1');
 
         map.addTilesetImage('tiles-1');
@@ -64,6 +76,7 @@ window.onload = function() {
         map.setCollisionByExclusion([13, 14, 15, 16, 46, 47, 48, 49, 50, 51]);
 
         layer = map.createLayer('Tile Layer 1');
+        */
 
         layer.resizeWorld();
 
