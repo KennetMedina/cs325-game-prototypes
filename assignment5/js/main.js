@@ -156,6 +156,8 @@ window.onload = function() {
         game.physics.arcade.collide(player, layer);
         game.physics.arcade.collide(robots, layer);
         game.physics.arcade.collide(hearts, layer);
+        game.physics.arcade.collide(brains, layer);
+        game.physics.arcade.collide(eyes, layer);
         game.physics.arcade.collide(bullets, layer);
 
         player.body.velocity.x = 0;
