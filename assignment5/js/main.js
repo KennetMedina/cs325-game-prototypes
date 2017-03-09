@@ -289,18 +289,18 @@ window.onload = function() {
 
         robot.kill();
 
-        var randomOrgan = (Math.random() * 3) + 1;
+        var randomOrgan = Math.floor((Math.random() * 2)) + 3;
 
         //  And drop an organ
-        if (randomOrgan === 1) {
+        if (randomOrgan === 3) {
             var heart = hearts.create(dx, dy, 'heart');
             heart.scale.setTo(0.25, 0.25);
         }
-        if (randomOrgan === 2) {
+        if (randomOrgan === 4) {
             var brain = brains.create(dx, dy, 'brain');
             heart.scale.setTo(0.25, 0.25);
         }
-        if (randomOrgan === 3) {
+        if (randomOrgan === 5) {
             var eye = eyes.create(dx, dy, 'eye');
             eye.scale.setTo(0.25, 0.25);
         }
