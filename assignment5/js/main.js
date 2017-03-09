@@ -289,7 +289,7 @@ window.onload = function() {
 
         robot.kill();
 
-        var randomOrgan = Math.random() * (4 - 1) + 1;
+        var randomOrgan = (Math.random() * 3) + 1;
 
         //  And drop an organ
         if (randomOrgan === 1) {
