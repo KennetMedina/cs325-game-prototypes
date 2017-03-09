@@ -62,6 +62,7 @@ window.onload = function() {
         //add music
         music = game.add.audio('battleTheme');
         music.play();
+        game.sound.loop = true;
 
 
         bg = game.add.tileSprite(0, 0, 800, 600, 'space');
@@ -340,6 +341,10 @@ window.onload = function() {
 
         //resets the player
         player.reset();
+
+        //restart the music
+        music.restart();
+
         //hides the text
         stateText.visible = false;
         //scoreText.text = scoreString + score;
