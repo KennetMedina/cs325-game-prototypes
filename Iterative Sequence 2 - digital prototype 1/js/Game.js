@@ -31,6 +31,8 @@ BasicGame.Game = function (game) {
     this.books = null;
     this.music = null;
     this.layer = null;
+    this.cursors = null;
+
 };
 
 BasicGame.Game.prototype = {
@@ -70,17 +72,23 @@ BasicGame.Game.prototype = {
         this.map = this.game.add.tilemap('maze');
         this.map.addTilesetImage('tile-set');
         this.layer = this.map.createLayer('col_layer');
+        this.map.setCollisionByExclusion([], true, this.layer);
         this.layer.resizeWorld();
 
-        this.feet = this.game.add.sprite(0, 0, 'player', 'feet/0001');
+        this.feet = this.game.add.sprite(32, 32, 'player', 'feet/0001');
         this.feet.anchor.setTo(0.5, 0.5);
         this.feet.animations.add('bWalk', Phaser.Animation.generateFrameNames('player/feet/', 1, 20, '', 4), 20, true, false);
 
-        this.player = this.game.add.sprite(0, 0, 'player', 'body/0001');
+        this.player = this.game.add.sprite(32, 32, 'player', 'body/0001');
         this.player.anchor.setTo(0.5, 0.5);
         this.player.animations.add('tWalk', Phaser.Animation.generateFrameNames('player/body/', 1, 20, '', 4), 20, true, false);
 
+        this.game.physics.enable(this.feet, Phaser.Physics.ARCADE);
+        this.game.physics.enable(this.player, Phaser.Physics.ARCADE);
+        this.feet.bringToTop();
+        this.player.bringToTop();
 
+        this.cursors = this.game.input.keyboard.createCursorKeys();
 
     },
 
@@ -93,7 +101,36 @@ BasicGame.Game.prototype = {
         // in X or Y.
         // This function returns the rotation angle that makes it visually match its
         // new trajectory.
-        this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 500, 500, 500 );
+        //this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 500, 500, 500 );
+
+        this.game.physics.arcade.collide(this.feet, layer);
+        this.game.physics.arcade.collide(this.player, layer);
+
+        if (this.cursors.left.isDown) {
+            this.feet.angle -= 4;
+            this.player.angle -= 4;
+            this.feet.x -= 2;
+            this.player.x -= 2;
+        }
+        else if (this.cursors.right.isDown) {
+            this.feet.angle += 4;
+            this.player.angle += 4;
+            this.feet.x += 2;
+            this.player.x += 2;
+        }
+        if (this.cursors.up.isDown) {
+            this.feet.y -= 2;
+            this.player.y -= 2;
+        }
+        else if (this.cursors.down.isDown) {
+            this.feet.y += 2;
+            this.player.y += 2;
+        }
+
+        this.player.x = this.feet.x;
+        this.player.y = this.feet.y;
+
+        this.player.rotation = this.feet.rotation;
     },
 
     quitGame: function (pointer) {
