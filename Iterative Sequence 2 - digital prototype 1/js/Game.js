@@ -79,12 +79,12 @@ BasicGame.Game.prototype = {
         //this.background = this.map.createLayer('background');
         //this.background.resizeWorld();
 
-        this.feet = this.game.add.sprite(32, 32, 'feet', 'feet/0001');
+        this.feet = this.game.add.sprite(32, 32, 'feet', '0001');
         this.feet.anchor.setTo(0.5, 0.5);
         this.feet.animations.add('bWalk', Phaser.Animation.generateFrameNames('feet/', 1, 20, '', 4), 10, true, false);
         this.feet.scale.setTo(0.25, 0.25);
 
-        this.body = this.game.add.sprite(32, 32, 'body', 'body/0001');
+        this.body = this.game.add.sprite(32, 32, 'body', '0001');
         this.body.anchor.setTo(0.5, 0.5);
         this.body.animations.add('tWalk', Phaser.Animation.generateFrameNames('body/', 1, 20, '', 4), 10, true, false);
         this.body.scale.setTo(0.25, 0.25);
@@ -129,8 +129,8 @@ BasicGame.Game.prototype = {
         if (this.cursors.up.isDown) {
             this.feet.y -= 2;
             this.body.y -= 2;
-            this.feet.animations.play('bWalk');
-            this.body.animations.play('tWalk');
+            //this.feet.animations.play('bWalk');
+            //this.body.animations.play('tWalk');
         }
         else if (this.cursors.down.isDown) {
             this.feet.y += 2;
