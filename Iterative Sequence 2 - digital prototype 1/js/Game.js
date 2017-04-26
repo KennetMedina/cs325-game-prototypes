@@ -79,7 +79,7 @@ BasicGame.Game.prototype = {
         this.map = this.game.add.tilemap('maze');
         this.map.addTilesetImage('tiles-2');
         this.layer = this.map.createLayer('walls');
-        this.map.setCollisionByExclusion([], true, this.layer);
+        this.map.setCollisionByExclusion([13, 14, 15, 16, 46, 47, 48, 49, 50, 51]);
         this.layer.resizeWorld();
         //this.background = this.map.createLayer('background');
         //this.background.resizeWorld();
@@ -102,9 +102,9 @@ BasicGame.Game.prototype = {
 
         this.game.camera.follow(this.pbody);
 
-        //this.book1 = this.game.add.sprite(48, 48, 'book');
-        //this.book1.animations.add('pturn1', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
-        //this.book1.animations.play('pturn1');
+        this.book1 = this.game.add.sprite(48, 48, 'book');
+        this.book1.animations.add('pturn1', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
+        this.book1.animations.play('pturn1');
         //this.book2 = this.game.add.sprite(264, 312, 'book');
         //this.book2.animations.add('pturn2', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
         //this.book2.animations.play('pturn2');
