@@ -86,7 +86,7 @@ BasicGame.Game.prototype = {
 
         //this.pfeet = this.game.add.sprite(32, 32, 'feet', 'f0001');
         this.pfeet = this.game.add.sprite(888, 648, 'feet');
-        this.pfeet.anchor.setTo(0.3, 0.5);
+        this.pfeet.anchor.setTo(0.5, 0.5);
         //this.pfeet.animations.add('bWalk', ['f0001', 'f0002' ,'f0003' ,'f0004' ,'f0005' ,'f0006' ,'f0007' ,'f0008' ,'f0009' ,'f0010' ,'f0011' ,'f0012' ,'f0013' ,'f0014', 'f0015', 'f0016', 'f0017', 'f0018', 'f0019', 'f0020'], 20, true);
         this.pfeet.animations.add('bWalk', [0, 2, 4, 7, 9, 11, 10, 8, 5, 3, 1, 3, 6, 8, 10, 11, 9, 7, 4, 2], 20, true);
         this.pfeet.scale.setTo(0.25, 0.25);
