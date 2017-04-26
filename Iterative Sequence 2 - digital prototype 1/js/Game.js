@@ -31,6 +31,7 @@ BasicGame.Game = function (game) {
     this.books = null;
     this.music = null;
     this.layer = null;
+    this.background = null;
     this.cursors = null;
 
 };
@@ -74,6 +75,8 @@ BasicGame.Game.prototype = {
         this.layer = this.map.createLayer('walls');
         this.map.setCollisionByExclusion([], true, this.layer);
         this.layer.resizeWorld();
+        this.background = this.map.createLayer('background');
+        this.background.resizeWorld();
 
         this.feet = this.game.add.sprite(32, 32, 'player', 'feet/0001');
         this.feet.anchor.setTo(0.5, 0.5);
