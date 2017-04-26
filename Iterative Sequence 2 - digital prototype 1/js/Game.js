@@ -79,7 +79,7 @@ BasicGame.Game.prototype = {
         this.map = this.game.add.tilemap('maze');
         this.map.addTilesetImage('tiles-2');
         this.layer = this.map.createLayer('walls');
-        this.map.setCollisionByExclusion([13, 14, 15, 16, 46, 47, 48, 49, 50, 51]);
+        this.map.setCollisionByExclusion([], true, this.layer);
         this.layer.resizeWorld();
         //this.background = this.map.createLayer('background');
         //this.background.resizeWorld();
