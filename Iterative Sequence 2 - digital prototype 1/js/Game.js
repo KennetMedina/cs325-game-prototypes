@@ -30,6 +30,11 @@ BasicGame.Game = function (game) {
     this.pfeet = null;
     this.pbody = null;
     this.books = null;
+    this.book1 = null;
+    this.book2 = null;
+    this.book3 = null;
+    this.book4 = null;
+    this.book5 = null;
     this.music = null;
     this.layer = null;
     this.background = null;
@@ -80,22 +85,34 @@ BasicGame.Game.prototype = {
         //this.background.resizeWorld();
 
         //this.pfeet = this.game.add.sprite(32, 32, 'feet', 'f0001');
-        this.pfeet = this.game.add.sprite(32, 32, 'feet');
-        this.pfeet.anchor.setTo(0.5, 0.5);
+        this.pfeet = this.game.add.sprite(888, 648, 'feet');
+        this.pfeet.anchor.setTo(0.3, 0.5);
         //this.pfeet.animations.add('bWalk', ['f0001', 'f0002' ,'f0003' ,'f0004' ,'f0005' ,'f0006' ,'f0007' ,'f0008' ,'f0009' ,'f0010' ,'f0011' ,'f0012' ,'f0013' ,'f0014', 'f0015', 'f0016', 'f0017', 'f0018', 'f0019', 'f0020'], 20, true);
         this.pfeet.animations.add('bWalk', [0, 2, 4, 7, 9, 11, 10, 8, 5, 3, 1, 3, 6, 8, 10, 11, 9, 7, 4, 2], 20, true);
         this.pfeet.scale.setTo(0.25, 0.25);
-        this.pfeet.animations.play('bWalk');
+        //this.pfeet.animations.play('bWalk');
 
         //this.pbody = this.game.add.sprite(32, 32, 'body', 'b0001');
-        this.pbody = this.game.add.sprite(32, 32, 'body');
+        this.pbody = this.game.add.sprite(888, 648, 'body');
         this.pbody.anchor.setTo(0.5, 0.5);
         //this.pbody.animations.add('tWalk', ['b0001', 'b0002', 'b0003', 'b0004', 'b0005', 'b0006', 'b0007', 'b0008', 'b0009', 'b0010', 'b0011', 'b0012', 'b0013', 'b0014', 'b0015', 'b0016', 'b0017', 'b0018', 'b0019', 'b0020'], 20, true);
         this.pbody.animations.add('tWalk', [3, 11, 6, 2, 19, 15, 13, 5, 1, 12, 14, 8, 9, 16, 17, 18, 14, 10, 7], 20, true);
         this.pbody.scale.setTo(0.25, 0.25);
-        this.pbody.animations.play('tWalk');
+        //this.pbody.animations.play('tWalk');
 
         this.game.camera.follow(this.pbody);
+
+        this.books = this.game.add.group();
+        this.books.enableBody = true;
+        this.books.physicsBodyType = Phaser.Physics.ARCADE;
+        this.books.animations.add('pturn', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
+
+        this.book1 = this.books.create(48, 48, 'book');
+        this.book2 = this.books.create(264, 312, 'book');
+        this.book3 = this.books.create(768, 120, 'book');
+        this.book4 = this.books.create(96, 384, 'book');
+        this.book5 = this.books.create(456, 672, 'book');
+
 
         this.game.physics.enable(this.pfeet, Phaser.Physics.ARCADE);
         this.game.physics.enable(this.pbody, Phaser.Physics.ARCADE);
@@ -135,8 +152,8 @@ BasicGame.Game.prototype = {
         if (this.cursors.up.isDown) {
             this.pfeet.y -= 2;
             this.pbody.y -= 2;
-            //this.feet.animations.play('bWalk');
-            //this.body.animations.play('tWalk');
+            this.feet.animations.play('bWalk');
+            this.body.animations.play('tWalk');
         }
         else if (this.cursors.down.isDown) {
             this.pfeet.y += 2;
