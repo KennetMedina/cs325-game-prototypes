@@ -105,9 +105,10 @@ BasicGame.Game.prototype = {
         this.books = this.game.add.group();
         this.books.enableBody = true;
         this.books.physicsBodyType = Phaser.Physics.ARCADE;
-        this.books.animations.add('pturn', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
 
         this.book1 = this.books.create(48, 48, 'book');
+        this.book1.animations.add('pturn', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
+        this.book1.animations.play('pturn');
         this.book2 = this.books.create(264, 312, 'book');
         this.book3 = this.books.create(768, 120, 'book');
         this.book4 = this.books.create(96, 384, 'book');
