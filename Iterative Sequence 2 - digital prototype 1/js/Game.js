@@ -78,10 +78,12 @@ BasicGame.Game.prototype = {
 
         this.map = this.game.add.tilemap('maze');
         this.map.addTilesetImage('tiles-2');
+        this.background = this.map.createLayer('background');
         this.layer = this.map.createLayer('walls');
-        this.map.setCollisionByExclusion([], true, this.layer);
+        //this.map.setCollisionByExclusion([], true, this.layer);
+        this.map.setCollisionBetween(1, 10000, true, this.layer);
         this.layer.resizeWorld();
-        //this.background = this.map.createLayer('background');
+        
         //this.background.resizeWorld();
 
         //this.pfeet = this.game.add.sprite(888, 648, 'feet');
@@ -89,7 +91,7 @@ BasicGame.Game.prototype = {
         this.pfeet.anchor.setTo(0.5, 0.5);
         //this.pfeet.animations.add('bWalk', [0, 11, 13, 15, 17, 19, 18, 16, 14, 12, 10, 2, 4, 6, 8, 9, 7, 5, 3, 1], 10, true);
         this.pfeet.animations.add('bWalk', Phaser.Animation.generateFrameNames('f', 1, 20, '', 4), 10, true, false);
-        this.pfeet.scale.setTo(0.25, 0.25);
+        this.pfeet.scale.setTo(0.20, 0.20);
         this.pfeet.animations.play('bWalk');
 
         //this.pbody = this.game.add.sprite(888, 648, 'body');
@@ -97,25 +99,30 @@ BasicGame.Game.prototype = {
         this.pbody.anchor.setTo(0.3, 0.5);
         //this.pbody.animations.add('tWalk', [3, 11, 6, 2, 19, 15, 13, 5, 1, 12, 0, 4, 8, 9, 16, 17, 18, 14, 10, 7], 10, true);
         this.pbody.animations.add('tWalk', Phaser.Animation.generateFrameNames('b', 1, 20, '', 4), 10, true, false);
-        this.pbody.scale.setTo(0.25, 0.25);
+        this.pbody.scale.setTo(0.20, 0.20);
         this.pbody.animations.play('tWalk');
 
         this.game.camera.follow(this.pbody);
 
         this.book1 = this.game.add.sprite(48, 48, 'book');
         this.book1.animations.add('pturn1', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
+        this.book1.scale.setTo(0.25, 0.25);
         this.book1.animations.play('pturn1');
         this.book2 = this.game.add.sprite(264, 312, 'book');
         this.book2.animations.add('pturn2', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
+        this.book2.scale.setTo(0.25, 0.25);
         this.book2.animations.play('pturn2');
         this.book3 = this.game.add.sprite(768, 120, 'book');
         this.book3.animations.add('pturn3', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
+        this.book3.scale.setTo(0.25, 0.25);
         this.book3.animations.play('pturn3');
         this.book4 = this.game.add.sprite(96, 384, 'book');
         this.book4.animations.add('pturn4', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
+        this.book4.scale.setTo(0.25, 0.25);
         this.book4.animations.play('pturn4');
         this.book5 = this.game.add.sprite(456, 672, 'book');
         this.book5.animations.add('pturn5', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
+        this.book5.scale.setTo(0.25, 0.25);
         this.book5.animations.play('pturn5');
 
 
