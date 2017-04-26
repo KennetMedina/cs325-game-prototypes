@@ -79,14 +79,14 @@ BasicGame.Game.prototype = {
         //this.background = this.map.createLayer('background');
         //this.background.resizeWorld();
 
-        this.pfeet = this.game.add.sprite(32, 32, 'feet', '0001');
+        this.pfeet = this.game.add.sprite(32, 32, 'feet', 'f0001');
         this.pfeet.anchor.setTo(0.5, 0.5);
-        this.pfeet.animations.add('bWalk', ['0001', '0002' ,'0003' ,'0004' ,'0005' ,'0006' ,'0007' ,'0008' ,'0009' ,'0010' ,'0011' ,'0012' ,'0013' ,'0014', '0015', '0016', '0017', '0018', '0019', '0020'], 10, true, false);
+        this.pfeet.animations.add('bWalk', ['f0001', 'f0002' ,'f0003' ,'f0004' ,'f0005' ,'f0006' ,'f0007' ,'f0008' ,'f0009' ,'f0010' ,'f0011' ,'f0012' ,'f0013' ,'f0014', 'f0015', 'f0016', 'f0017', 'f0018', 'f0019', 'f0020'], 10, true, false);
         this.pfeet.scale.setTo(0.25, 0.25);
 
-        this.pbody = this.game.add.sprite(32, 32, 'body', '0001');
+        this.pbody = this.game.add.sprite(32, 32, 'body', 'b0001');
         this.pbody.anchor.setTo(0.5, 0.5);
-        this.pbody.animations.add('tWalk', ['0001', '0002', '0003', '0004', '0005', '0006', '0007', '0008', '0009', '0010', '0011', '0012', '0013', '0014', '0015', '0016', '0017', '0018', '0019', '0020'], 10, true, false);
+        this.pbody.animations.add('tWalk', ['b0001', 'b0002', 'b0003', 'b0004', 'b0005', 'b0006', 'b0007', 'b0008', 'b0009', 'b0010', 'b0011', 'b0012', 'b0013', 'b0014', 'b0015', 'b0016', 'b0017', 'b0018', 'b0019', 'b0020'], 10, true, false);
         this.pbody.scale.setTo(0.25, 0.25);
 
         this.game.camera.follow(this.pbody);
