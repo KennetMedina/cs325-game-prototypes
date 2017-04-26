@@ -70,8 +70,8 @@ BasicGame.Game.prototype = {
         this.music.play();
 
         this.map = this.game.add.tilemap('maze');
-        this.map.addTilesetImage('tile-set');
-        this.layer = this.map.createLayer('col_layer');
+        this.map.addTilesetImage('tiles-2');
+        this.layer = this.map.createLayer('walls');
         this.map.setCollisionByExclusion([], true, this.layer);
         this.layer.resizeWorld();
 

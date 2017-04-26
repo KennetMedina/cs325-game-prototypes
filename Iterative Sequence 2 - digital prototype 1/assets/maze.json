@@ -799,17 +799,8 @@
  "tileheight":24,
  "tilesets":[
         {
-         "columns":23,
          "firstgid":1,
-         "image":"tiles-2.png",
-         "imageheight":368,
-         "imagewidth":560,
-         "margin":0,
-         "name":"tiles-2",
-         "spacing":0,
-         "tilecount":345,
-         "tileheight":24,
-         "tilewidth":24
+         "source":"tiles-2.json"
         }],
  "tilewidth":24,
  "version":1,
