@@ -28,7 +28,7 @@ BasicGame.Preloader.prototype = {
 		this.load.atlas('playButton', 'assets/play_button.png', 'assets/play_button.json');
 		this.load.audio('titleMusic', ['assets/crystal cave.mp3']);
 		//	+ lots of other required assets here
-		this.load.spritesheet('book', 'assets/book.png');
+		this.load.spritesheet('book', 'assets/book.png', 64, 64);
 		this.load.audio('mainMusic', ['assets/deep.mp3']);
 		//this.load.atlasJSONHash('player', 'assets/player.png', 'assets/player.json');
 		this.load.atlas('feet', 'assets/feet.png', 'assets/feet.json');
