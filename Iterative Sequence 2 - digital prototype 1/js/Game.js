@@ -86,13 +86,13 @@ BasicGame.Game.prototype = {
 
         this.pfeet = this.game.add.sprite(888, 648, 'feet');
         this.pfeet.anchor.setTo(0.5, 0.5);
-        this.pfeet.animations.add('bWalk', [0, 2, 4, 7, 9, 11, 10, 8, 5, 3, 1, 3, 6, 8, 10, 11, 9, 7, 4, 2], 10, true);
+        this.pfeet.animations.add('bWalk', [0, 11, 13, 15, 17, 19, 18, 16, 14, 12, 10, 2, 4, 6, 8, 9, 7, 5, 3, 1], 10, true);
         this.pfeet.scale.setTo(0.25, 0.25);
         this.pfeet.animations.play('bWalk');
 
         this.pbody = this.game.add.sprite(888, 648, 'body');
         this.pbody.anchor.setTo(0.7, 0.5);
-        this.pbody.animations.add('tWalk', [3, 11, 6, 2, 19, 15, 13, 5, 1, 12, 14, 8, 9, 16, 17, 18, 14, 10, 7], 10, true);
+        this.pbody.animations.add('tWalk', [3, 11, 6, 2, 19, 15, 13, 5, 1, 12, 0, 4, 8, 9, 16, 17, 18, 14, 10, 7], 10, true);
         this.pbody.scale.setTo(0.25, 0.25);
         this.pbody.animations.play('tWalk');
 
