@@ -28,6 +28,7 @@ BasicGame.Game = function (game) {
     this.map = null;
     this.player = null;
     this.feet = null;
+    this.body = null;
     this.books = null;
     this.music = null;
     this.layer = null;
@@ -78,22 +79,22 @@ BasicGame.Game.prototype = {
         //this.background = this.map.createLayer('background');
         //this.background.resizeWorld();
 
-        this.feet = this.game.add.sprite(32, 32, 'player', 'assets/player/feet/0001');
+        this.feet = this.game.add.sprite(32, 32, 'feet', 'assets/feet/0001');
         this.feet.anchor.setTo(0.5, 0.5);
-        this.feet.animations.add('bWalk', Phaser.Animation.generateFrameNames('player/feet/', 1, 20, '', 4), 10, true, false);
+        this.feet.animations.add('bWalk', Phaser.Animation.generateFrameNames('feet/', 1, 20, '', 4), 10, true, false);
         this.feet.scale.setTo(0.25, 0.25);
 
-        this.player = this.game.add.sprite(32, 32, 'player', 'assets/plyer/body/0001');
-        this.player.anchor.setTo(0.5, 0.5);
-        this.player.animations.add('tWalk', Phaser.Animation.generateFrameNames('player/body/', 1, 20, '', 4), 10, true, false);
-        this.player.scale.setTo(0.25, 0.25);
+        this.body = this.game.add.sprite(32, 32, 'body', 'assets/body/0001');
+        this.body.anchor.setTo(0.5, 0.5);
+        this.body.animations.add('tWalk', Phaser.Animation.generateFrameNames('body/', 1, 20, '', 4), 10, true, false);
+        this.body.scale.setTo(0.25, 0.25);
 
-        this.game.camera.follow(this.player);
+        this.game.camera.follow(this.body);
 
         this.game.physics.enable(this.feet, Phaser.Physics.ARCADE);
-        this.game.physics.enable(this.player, Phaser.Physics.ARCADE);
+        this.game.physics.enable(this.body, Phaser.Physics.ARCADE);
         this.feet.bringToTop();
-        this.player.bringToTop();
+        this.body.bringToTop();
 
         this.cursors = this.game.input.keyboard.createCursorKeys();
 
@@ -111,33 +112,35 @@ BasicGame.Game.prototype = {
         //this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 500, 500, 500 );
 
         this.game.physics.arcade.collide(this.feet, this.layer);
-        this.game.physics.arcade.collide(this.player, this.layer);
+        this.game.physics.arcade.collide(this.body, this.layer);
 
         if (this.cursors.left.isDown) {
-            this.feet.angle -= 4;
-            this.player.angle -= 4;
+            //this.feet.angle -= 4;
+            //this.player.angle -= 4;
             this.feet.x -= 2;
-            this.player.x -= 2;
+            this.body.x -= 2;
         }
         else if (this.cursors.right.isDown) {
-            this.feet.angle += 4;
-            this.player.angle += 4;
+            //this.feet.angle += 4;
+            //this.player.angle += 4;
             this.feet.x += 2;
-            this.player.x += 2;
+            this.body.x += 2;
         }
         if (this.cursors.up.isDown) {
             this.feet.y -= 2;
-            this.player.y -= 2;
+            this.body.y -= 2;
+            this.feet.animations.play('bWalk');
+            this.body.animations.play('tWalk');
         }
         else if (this.cursors.down.isDown) {
             this.feet.y += 2;
-            this.player.y += 2;
+            this.body.y += 2;
         }
 
-        this.player.x = this.feet.x;
-        this.player.y = this.feet.y;
+        this.body.x = this.feet.x;
+        this.body.y = this.feet.y;
 
-        this.player.rotation = this.feet.rotation;
+        this.body.rotation = this.feet.rotation;
     },
 
     quitGame: function (pointer) {
