@@ -6,7 +6,7 @@
         <key>texturePackerVersion</key>
         <string>4.4.0</string>
         <key>fileName</key>
-        <string>C:/Users/Kennet/Documents/GitHub/cs325-game-prototypes/Iterative Sequence 2 - digital prototype 1/assets/body/body.tps</string>
+        <string>C:/Users/Kennet/Documents/GitHub/cs325-game-prototypes/Iterative Sequence 2 - digital prototype 1/assets/body.tps</string>
         <key>autoSDSettings</key>
         <array>
             <struct type="AutoSDSettings">
@@ -36,7 +36,7 @@
         <key>dataFormat</key>
         <string>phaser-json-hash</string>
         <key>textureFileName</key>
-        <filename>../body.png</filename>
+        <filename>body.png</filename>
         <key>flipPVR</key>
         <false/>
         <key>pvrCompressionQuality</key>
@@ -150,7 +150,7 @@
             <key>data</key>
             <struct type="DataFile">
                 <key>name</key>
-                <filename>../body.json</filename>
+                <filename>body.json</filename>
             </struct>
         </map>
         <key>multiPack</key>
@@ -234,7 +234,26 @@
         </map>
         <key>fileList</key>
         <array>
-            <filename>.</filename>
+            <filename>b0001.png</filename>
+            <filename>b0002.png</filename>
+            <filename>b0003.png</filename>
+            <filename>b0004.png</filename>
+            <filename>b0005.png</filename>
+            <filename>b0006.png</filename>
+            <filename>b0007.png</filename>
+            <filename>b0008.png</filename>
+            <filename>b0009.png</filename>
+            <filename>b0010.png</filename>
+            <filename>b0011.png</filename>
+            <filename>b0012.png</filename>
+            <filename>b0013.png</filename>
+            <filename>b0014.png</filename>
+            <filename>b0015.png</filename>
+            <filename>b0016.png</filename>
+            <filename>b0017.png</filename>
+            <filename>b0018.png</filename>
+            <filename>b0019.png</filename>
+            <filename>b0020.png</filename>
         </array>
         <key>ignoreFileList</key>
         <array/>
