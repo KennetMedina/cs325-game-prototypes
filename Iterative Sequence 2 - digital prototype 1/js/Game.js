@@ -106,8 +106,8 @@ BasicGame.Game.prototype = {
         // new trajectory.
         //this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 500, 500, 500 );
 
-        this.game.physics.arcade.collide(this.feet, layer);
-        this.game.physics.arcade.collide(this.player, layer);
+        this.game.physics.arcade.collide(this.feet, this.layer);
+        this.game.physics.arcade.collide(this.player, this.layer);
 
         if (this.cursors.left.isDown) {
             this.feet.angle -= 4;
