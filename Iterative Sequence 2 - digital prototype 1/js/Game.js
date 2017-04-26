@@ -90,7 +90,7 @@ BasicGame.Game.prototype = {
         //this.pfeet.animations.add('bWalk', [0, 11, 13, 15, 17, 19, 18, 16, 14, 12, 10, 2, 4, 6, 8, 9, 7, 5, 3, 1], 10, true);
         this.pfeet.animations.add('bWalk', Phaser.Animation.generateFrameNames('feet/', 1, 20, 'f', 4), 10, true, false);
         this.pfeet.scale.setTo(0.25, 0.25);
-        //this.pfeet.animations.play('bWalk');
+        this.pfeet.animations.play('bWalk');
 
         //this.pbody = this.game.add.sprite(888, 648, 'body');
         this.pbody = this.game.add.sprite(888, 648, 'body', 'b0001');
@@ -98,7 +98,7 @@ BasicGame.Game.prototype = {
         //this.pbody.animations.add('tWalk', [3, 11, 6, 2, 19, 15, 13, 5, 1, 12, 0, 4, 8, 9, 16, 17, 18, 14, 10, 7], 10, true);
         this.pbody.animations.add('tWalk', Phaser.Animation.generateFrameNames('body/', 1, 20, 'b', 4), 10, true, false);
         this.pbody.scale.setTo(0.25, 0.25);
-        //this.pbody.animations.play('tWalk');
+        this.pbody.animations.play('tWalk');
 
         this.game.camera.follow(this.pbody);
 
