@@ -75,16 +75,20 @@ BasicGame.Game.prototype = {
         this.layer = this.map.createLayer('walls');
         this.map.setCollisionByExclusion([], true, this.layer);
         this.layer.resizeWorld();
-        this.background = this.map.createLayer('background');
-        this.background.resizeWorld();
+        //this.background = this.map.createLayer('background');
+        //this.background.resizeWorld();
 
-        this.feet = this.game.add.sprite(32, 32, 'player', 'feet/0001');
+        this.feet = this.game.add.sprite(32, 32, 'player', 'assets/player/feet/0001');
         this.feet.anchor.setTo(0.5, 0.5);
-        this.feet.animations.add('bWalk', Phaser.Animation.generateFrameNames('player/feet/', 1, 20, '', 4), 20, true, false);
+        this.feet.animations.add('bWalk', Phaser.Animation.generateFrameNames('player/feet/', 1, 20, '', 4), 10, true, false);
+        this.feet.scale.setTo(0.25, 0.25);
 
-        this.player = this.game.add.sprite(32, 32, 'player', 'body/0001');
+        this.player = this.game.add.sprite(32, 32, 'player', 'assets/plyer/body/0001');
         this.player.anchor.setTo(0.5, 0.5);
-        this.player.animations.add('tWalk', Phaser.Animation.generateFrameNames('player/body/', 1, 20, '', 4), 20, true, false);
+        this.player.animations.add('tWalk', Phaser.Animation.generateFrameNames('player/body/', 1, 20, '', 4), 10, true, false);
+        this.player.scale.setTo(0.25, 0.25);
+
+        this.game.camera.follow(this.player);
 
         this.game.physics.enable(this.feet, Phaser.Physics.ARCADE);
         this.game.physics.enable(this.player, Phaser.Physics.ARCADE);
