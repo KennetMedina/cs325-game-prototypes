@@ -94,7 +94,7 @@ BasicGame.Game.prototype = {
 
         //this.pbody = this.game.add.sprite(888, 648, 'body');
         this.pbody = this.game.add.sprite(888, 648, 'body', 'b0001');
-        this.pbody.anchor.setTo(0.7, 0.5);
+        this.pbody.anchor.setTo(0.3, 0.5);
         //this.pbody.animations.add('tWalk', [3, 11, 6, 2, 19, 15, 13, 5, 1, 12, 0, 4, 8, 9, 16, 17, 18, 14, 10, 7], 10, true);
         this.pbody.animations.add('tWalk', Phaser.Animation.generateFrameNames('body/', 1, 20, 'b', 4), 10, true, false);
         this.pbody.scale.setTo(0.25, 0.25);
