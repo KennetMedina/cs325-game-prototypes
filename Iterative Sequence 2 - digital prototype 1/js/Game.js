@@ -90,7 +90,7 @@ BasicGame.Game.prototype = {
         //this.pfeet.animations.add('bWalk', ['f0001', 'f0002' ,'f0003' ,'f0004' ,'f0005' ,'f0006' ,'f0007' ,'f0008' ,'f0009' ,'f0010' ,'f0011' ,'f0012' ,'f0013' ,'f0014', 'f0015', 'f0016', 'f0017', 'f0018', 'f0019', 'f0020'], 20, true);
         this.pfeet.animations.add('bWalk', [0, 2, 4, 7, 9, 11, 10, 8, 5, 3, 1, 3, 6, 8, 10, 11, 9, 7, 4, 2], 20, true);
         this.pfeet.scale.setTo(0.25, 0.25);
-        this.pfeet.animations.play('bWalk');
+        //this.pfeet.animations.play('bWalk');
 
         //this.pbody = this.game.add.sprite(32, 32, 'body', 'b0001');
         this.pbody = this.game.add.sprite(888, 648, 'body');
@@ -98,23 +98,23 @@ BasicGame.Game.prototype = {
         //this.pbody.animations.add('tWalk', ['b0001', 'b0002', 'b0003', 'b0004', 'b0005', 'b0006', 'b0007', 'b0008', 'b0009', 'b0010', 'b0011', 'b0012', 'b0013', 'b0014', 'b0015', 'b0016', 'b0017', 'b0018', 'b0019', 'b0020'], 20, true);
         this.pbody.animations.add('tWalk', [3, 11, 6, 2, 19, 15, 13, 5, 1, 12, 14, 8, 9, 16, 17, 18, 14, 10, 7], 20, true);
         this.pbody.scale.setTo(0.25, 0.25);
-        this.pbody.animations.play('tWalk');
+        //this.pbody.animations.play('tWalk');
 
         this.game.camera.follow(this.pbody);
 
-        this.book1 = this.game.add.sprite(48, 48, 'book');
+        //this.book1 = this.game.add.sprite(48, 48, 'book');
         //this.book1.animations.add('pturn1', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
         //this.book1.animations.play('pturn1');
-        this.book2 = this.game.add.sprite(264, 312, 'book');
+        //this.book2 = this.game.add.sprite(264, 312, 'book');
         //this.book2.animations.add('pturn2', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
         //this.book2.animations.play('pturn2');
-        this.book3 = this.game.add.sprite(768, 120, 'book');
+        //this.book3 = this.game.add.sprite(768, 120, 'book');
         //this.book3.animations.add('pturn3', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
         //this.book3.animations.play('pturn3');
-        this.book4 = this.game.add.sprite(96, 384, 'book');
+        //this.book4 = this.game.add.sprite(96, 384, 'book');
         //this.book4.animations.add('pturn4', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
         //this.book4.animations.play('pturn4');
-        this.book5 = this.game.add.sprite(456, 672, 'book');
+        //this.book5 = this.game.add.sprite(456, 672, 'book');
         //this.book5.animations.add('pturn5', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
         //this.book5.animations.play('pturn5');
 
