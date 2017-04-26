@@ -81,7 +81,7 @@ BasicGame.Game.prototype = {
         this.background = this.map.createLayer('background');
         this.layer = this.map.createLayer('walls');
         //this.map.setCollisionByExclusion([], true, this.layer);
-        this.map.setCollisionBetween(1, 10000, true, this.layer);
+        this.map.setCollisionBetween(1, 10000, true);
         this.layer.resizeWorld();
         
         //this.background.resizeWorld();
@@ -105,23 +105,23 @@ BasicGame.Game.prototype = {
         this.game.camera.follow(this.pbody);
 
         this.book1 = this.game.add.sprite(48, 48, 'book');
-        this.book1.animations.add('pturn1', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
+        this.book1.animations.add('pturn1', [0, 1, 2, 3, 4, 5, 6, 7, 8], 10, true);
         this.book1.scale.setTo(0.25, 0.25);
         this.book1.animations.play('pturn1');
         this.book2 = this.game.add.sprite(264, 312, 'book');
-        this.book2.animations.add('pturn2', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
+        this.book2.animations.add('pturn2', [0, 1, 2, 3, 4, 5, 6, 7, 8], 10, true);
         this.book2.scale.setTo(0.25, 0.25);
         this.book2.animations.play('pturn2');
         this.book3 = this.game.add.sprite(768, 120, 'book');
-        this.book3.animations.add('pturn3', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
+        this.book3.animations.add('pturn3', [0, 1, 2, 3, 4, 5, 6, 7, 8], 10, true);
         this.book3.scale.setTo(0.25, 0.25);
         this.book3.animations.play('pturn3');
         this.book4 = this.game.add.sprite(96, 384, 'book');
-        this.book4.animations.add('pturn4', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
+        this.book4.animations.add('pturn4', [0, 1, 2, 3, 4, 5, 6, 7, 8], 10, true);
         this.book4.scale.setTo(0.25, 0.25);
         this.book4.animations.play('pturn4');
         this.book5 = this.game.add.sprite(456, 672, 'book');
-        this.book5.animations.add('pturn5', [0, 1, 2, 3, 4, 5, 6, 7, 8], 20, true);
+        this.book5.animations.add('pturn5', [0, 1, 2, 3, 4, 5, 6, 7, 8], 10, true);
         this.book5.scale.setTo(0.25, 0.25);
         this.book5.animations.play('pturn5');
 
