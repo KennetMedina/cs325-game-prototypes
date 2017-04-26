@@ -31,10 +31,10 @@ BasicGame.Preloader.prototype = {
 		this.load.spritesheet('book', 'assets/book.png');
 		this.load.audio('mainMusic', ['assets/deep.mp3']);
 		//this.load.atlasJSONHash('player', 'assets/player.png', 'assets/player.json');
-		//this.load.atlasJSONHash('feet', 'assets/feet.png', 'assets/feet.json');
-		//this.load.atlasJSONHash('body', 'assets/body.png', 'assets/body.json');
-		this.load.spritesheet('feet', 'assets/feet.png');
-		this.load.spritesheet('body', 'assets/body.png');
+		this.load.atlasJSONHash('feet', 'assets/feet.png', 'assets/feet.json');
+		this.load.atlasJSONHash('body', 'assets/body.png', 'assets/body.json');
+		//this.load.spritesheet('feet', 'assets/feet.png');
+		//this.load.spritesheet('body', 'assets/body.png');
 	    this.load.tilemap('maze', 'assets/maze.json', null, Phaser.Tilemap.TILED_JSON);
 	    this.load.image('tiles-2', 'assets/tiles-2.png');
 
