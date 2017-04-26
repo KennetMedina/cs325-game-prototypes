@@ -32,7 +32,7 @@ BasicGame.Preloader.prototype = {
 		this.load.audio('mainMusic', ['assets/deep.mp3']);
 	    this.load.atlasJSONHash('player', 'player.png', 'player.json');
 	    this.load.tilemap('maze', 'assets/maze.json', null, Phaser.Tilemap.TILED_JSON);
-	    this.load.image('tile-set', 'assets/tiles-2.png');
+	    this.load.image('tiles-2', 'assets/tiles-2.png');
 
 	},
 
