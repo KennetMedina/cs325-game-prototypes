@@ -79,7 +79,7 @@ BasicGame.Game.prototype = {
         // Start of Code for game
         this.game.physics.startSystem(Phaser.Physics.ARCADE);
 
-        this.music = this.add.audio('mainMusic');
+        this.music = this.game.add.audio('mainMusic');
         this.music.play();
 
         this.map = this.game.add.tilemap('maze');
