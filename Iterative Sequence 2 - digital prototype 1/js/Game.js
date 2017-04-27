@@ -201,11 +201,11 @@ BasicGame.Game.prototype = {
 
         //this.pbody.rotation = this.pfeet.rotation;
 
-        this.game.physics.arcade.overlap(this.pfeet, this.book1, collectBook, null, this);
-        this.game.physics.arcade.overlap(this.pfeet, this.book2, collectBook, null, this);
-        this.game.physics.arcade.overlap(this.pfeet, this.book3, collectBook, null, this);
-        this.game.physics.arcade.overlap(this.pfeet, this.book4, collectBook, null, this);
-        this.game.physics.arcade.overlap(this.pfeet, this.book5, collectBook, null, this);
+        this.game.physics.arcade.overlap(this.pfeet, this.book1, this.collectBook, null, this);
+        this.game.physics.arcade.overlap(this.pfeet, this.book2, this.collectBook, null, this);
+        this.game.physics.arcade.overlap(this.pfeet, this.book3, this.collectBook, null, this);
+        this.game.physics.arcade.overlap(this.pfeet, this.book4, this.collectBook, null, this);
+        this.game.physics.arcade.overlap(this.pfeet, this.book5, this.collectBook, null, this);
     },
 
     quitGame: function (pointer) {
@@ -232,7 +232,7 @@ BasicGame.Game.prototype = {
             this.stateText.visible = true;
 
         //the "click to restart" handler
-            this.game.input.onTap.addOnce(restart, this);
+            this.game.input.onTap.addOnce(this.restart, this);
         }
     },
 
