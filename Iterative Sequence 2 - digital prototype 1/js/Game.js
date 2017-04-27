@@ -149,7 +149,7 @@ BasicGame.Game.prototype = {
         this.pfeet.bringToTop();
         this.pbody.bringToTop();
 
-        this.scoreText = this.game.add.text(10, 10, this.scoreString + this.score + ' out of 10', { font: '24px Arial', fill: '#fff' });
+        this.scoreText = this.game.add.text(10, 10, this.scoreString + this.score + ' out of 5', { font: '24px Arial', fill: '#fff' });
         this.scoreText.fixedToCamera = true;
 
         this.stateText = this.game.add.text(this.game.world.centerX, this.game.world.centerY, ' ', { font: '84px Arial', fill: '#fff' });
@@ -228,14 +228,15 @@ BasicGame.Game.prototype = {
 
     collectBook: function (pfeet, book) {
         this.score += 1;
-        this.scoreText.text = this.scoreString + this.score + ' out of 10';
+        this.scoreText.text = this.scoreString + this.score + ' out of 5';
         book.kill();
 
         if (this.score === 5) {
-        //score += 1000;
-            this.scoreText.text = this.scoreString + this.score + ' out of 10';
+            //score += 1000;
+            this.music.stop();
+            this.scoreText.text = this.scoreString + this.score + ' out of 5';
 
-            this.stateText.text = " You Won, \n Click to restart";
+            this.stateText.text = "You Won, \n Click to restart";
             this.stateText.fixedToCamera = true;
             this.stateText.visible = true;
 
@@ -247,7 +248,7 @@ BasicGame.Game.prototype = {
     restart: function () {
         //  A new level starts
         this.score = 0;
-        this.scoreText.text = this.scoreString + this.score + ' out of 10';
+        this.scoreText.text = this.scoreString + this.score + ' out of 5';
         
         //  And brings the aliens back from the dead :)
         this.book1.revive();
@@ -256,9 +257,13 @@ BasicGame.Game.prototype = {
         this.book4.revive();
         this.book5.revive();
 
-        //resets the player
-        this.pfeet.reset();
-        this.pbody.reset();
+        //  resets the player
+        //this.pfeet.reset();
+        //this.pbody.reset();
+        this.pfeet.kill();
+        this.pbody.kill();
+        this.pfeet.revive();
+        this.pbody.revive();
 
         //restart the music
         this.music.restart();
