@@ -81,7 +81,7 @@ BasicGame.Game.prototype = {
         this.background = this.map.createLayer('background');
         this.layer = this.map.createLayer('walls');
         //this.map.setCollisionByExclusion([], true, this.layer);
-        this.map.setCollisionBetween(1, 10000, true);
+        this.map.setCollision([0, 117], true, this.layer);
         this.layer.resizeWorld();
         
         //this.background.resizeWorld();
@@ -90,17 +90,23 @@ BasicGame.Game.prototype = {
         this.pfeet = this.game.add.sprite(888, 648, 'feet', 'f0001');
         this.pfeet.anchor.setTo(0.5, 0.5);
         //this.pfeet.animations.add('bWalk', [0, 11, 13, 15, 17, 19, 18, 16, 14, 12, 10, 2, 4, 6, 8, 9, 7, 5, 3, 1], 10, true);
-        this.pfeet.animations.add('bWalk', Phaser.Animation.generateFrameNames('f', 1, 20, '', 4), 10, true, false);
+        this.pfeet.animations.add('bWalk', Phaser.Animation.generateFrameNames('f', 1, 20, '', 4), 20, true, false);
         this.pfeet.scale.setTo(0.20, 0.20);
-        this.pfeet.animations.play('bWalk');
+        //this.pfeet.animations.play('bWalk');
 
         //this.pbody = this.game.add.sprite(888, 648, 'body');
         this.pbody = this.game.add.sprite(888, 648, 'body', 'b0001');
         this.pbody.anchor.setTo(0.3, 0.5);
         //this.pbody.animations.add('tWalk', [3, 11, 6, 2, 19, 15, 13, 5, 1, 12, 0, 4, 8, 9, 16, 17, 18, 14, 10, 7], 10, true);
-        this.pbody.animations.add('tWalk', Phaser.Animation.generateFrameNames('b', 1, 20, '', 4), 10, true, false);
+        this.pbody.animations.add('tWalk', Phaser.Animation.generateFrameNames('b', 1, 20, '', 4), 20, true, false);
         this.pbody.scale.setTo(0.20, 0.20);
-        this.pbody.animations.play('tWalk');
+        //this.pbody.animations.play('tWalk');
+
+        this.pfeet.body.maxAngular = 500;
+        this.pfeet.body.angularDrag = 50;
+
+        this.pbody.body.maxAngular = 500;
+        this.pbody.body.angularDrag = 50;
 
         this.game.camera.follow(this.pbody);
 
@@ -147,29 +153,36 @@ BasicGame.Game.prototype = {
         //this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 500, 500, 500 );
 
         this.game.physics.arcade.collide(this.pfeet, this.layer);
-        this.game.physics.arcade.collide(this.pbody, this.layer);
+        //this.game.physics.arcade.collide(this.pbody, this.layer);
+
+        this.pfeet.animations.stop();
+        this.pbody.animations.stop();
+
+        this.pfeet.body.velocity.x = 0;
+        this.pfeet.body.velocity.y = 0;
+        this.pfeet.body.angularVelocity = 0;
+
+        this.pbody.body.velocity.x = 0;
+        this.pbody.body.velocity.y = 0;
+        this.pbody.body.angularVelocity = 0;
 
         if (this.cursors.left.isDown) {
-            //this.feet.angle -= 4;
-            //this.player.angle -= 4;
-            this.pfeet.x -= 2;
-            this.pbody.x -= 2;
+            this.pfeet.body.angularVelocity = -200;
+            this.pbody.body.angularVelocity = -200;
         }
         else if (this.cursors.right.isDown) {
-            //this.feet.angle += 4;
-            //this.player.angle += 4;
-            this.pfeet.x += 2;
-            this.pbody.x += 2;
+            this.pfeet.body.angularVelocity = 200;
+            this.pbody.body.angularVelocity = 200;
         }
         if (this.cursors.up.isDown) {
-            this.pfeet.y -= 2;
-            this.pbody.y -= 2;
-            //this.feet.animations.play('bWalk');
-            //this.body.animations.play('tWalk');
+            this.game.physics.arcade.velocityFromAngle(this.pfeet.angle, 200, this.pfeet.body.velocity);
+            this.game.physics.arcade.velocityFromAngle(this.pbody.angle, 200, this.pbody.body.velocity);
+            this.pfeet.animations.play('bWalk');
+            this.pbody.animations.play('tWalk');
         }
         else if (this.cursors.down.isDown) {
-            this.pfeet.y += 2;
-            this.pbody.y += 2;
+            //this.pfeet.y += 2;
+            //this.pbody.y += 2;
         }
 
         this.pbody.x = this.pfeet.x;
