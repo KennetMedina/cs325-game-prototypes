@@ -39,6 +39,7 @@ BasicGame.Game = function (game) {
     this.layer = null;
     this.background = null;
     this.cursors = null;
+    this.isIdle = true;
 
     this.score = 0;
     this.scoreString = 'Books recovered : ';
@@ -196,13 +197,21 @@ BasicGame.Game.prototype = {
             this.game.physics.arcade.velocityFromAngle(this.pbody.angle, 150, this.pbody.body.velocity);
             this.pfeet.animations.play('bWalk');
             this.pbody.animations.play('tWalk');
+            this.isIdle = false;
         }
         else if (this.cursors.down.isDown) {
             this.game.physics.arcade.velocityFromAngle(this.pfeet.angle, -150, this.pfeet.body.velocity);
             this.game.physics.arcade.velocityFromAngle(this.pbody.angle, -150, this.pbody.body.velocity);
             this.pfeet.animations.stop();
             this.pbody.animations.stop();
+            this.isIdle = false;
         }
+        else if (this.isIdle !== true) {
+                this.pfeet.animations.stop();
+                this.pbody.animations.stop();
+                
+                this.isIdle = true;
+            }
 
         this.pbody.x = this.pfeet.x;
         this.pbody.y = this.pfeet.y;
