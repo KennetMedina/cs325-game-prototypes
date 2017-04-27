@@ -91,6 +91,7 @@ BasicGame.Game.prototype = {
         this.pfeet.animations.add('bWalk', Phaser.Animation.generateFrameNames('f', 1, 20, '', 4), 20, true, false);
         this.pfeet.scale.setTo(0.20, 0.20);
         //this.pfeet.animations.play('bWalk');
+        this.game.physics.enable(this.pfeet, Phaser.Physics.ARCADE);
         this.pfeet.body.collideWorldBounds = true;
         this.pfeet.body.setSize(20, 32, 5, 16);
 
@@ -99,6 +100,7 @@ BasicGame.Game.prototype = {
         this.pbody.animations.add('tWalk', Phaser.Animation.generateFrameNames('b', 1, 20, '', 4), 20, true, false);
         this.pbody.scale.setTo(0.20, 0.20);
         //this.pbody.animations.play('tWalk');
+        this.game.physics.enable(this.pbody, Phaser.Physics.ARCADE);
         this.pbody.body.collideWorldBounds = true;
         this.pbody.body.setSize(20, 32, 5, 16);
 
@@ -132,8 +134,8 @@ BasicGame.Game.prototype = {
         this.book5.animations.play('pturn5');
 
 
-        this.game.physics.enable(this.pfeet, Phaser.Physics.ARCADE);
-        this.game.physics.enable(this.pbody, Phaser.Physics.ARCADE);
+        
+        
         this.pfeet.bringToTop();
         this.pbody.bringToTop();
 
