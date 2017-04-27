@@ -40,6 +40,11 @@ BasicGame.Game = function (game) {
     this.background = null;
     this.cursors = null;
 
+    this.score = 0;
+    this.scoreString = 'Books recovered : ';
+    this.scoreText = null;
+    this.stateText = null;
+
 };
 
 BasicGame.Game.prototype = {
@@ -133,14 +138,60 @@ BasicGame.Game.prototype = {
         this.book5.scale.setTo(0.25, 0.25);
         this.book5.animations.play('pturn5');
 
-
-        
-        
         this.pfeet.bringToTop();
         this.pbody.bringToTop();
 
+        this.scoreText = this.game.add.text(10, 10, this.scoreString + this.score + ' out of 10', { font: '24px Arial', fill: '#fff' });
+        this.scoreText.fixedToCamera = true;
+
+        this.stateText = this.game.add.text(this.game.world.centerX, this.game.world.centerY, ' ', { font: '84px Arial', fill: '#fff' });
+        this.stateText.anchor.setTo(0.5, 0.5);
+        this.stateText.visible = false;
+
         this.cursors = this.game.input.keyboard.createCursorKeys();
 
+    },
+
+    collectBook: function (pfeet, book) {
+        this.score += 1;
+        this.scoreText.text = this.scoreString + this.score + ' out of 10';
+        book.kill();
+
+        if (this.score === 5) {
+            //score += 1000;
+            this.scoreText.text = this.scoreString + this.score + ' out of 10';
+
+            this.stateText.text = " You Won, \n Click to restart";
+            this.stateText.fixedToCamera = true;
+            this.stateText.visible = true;
+
+            //the "click to restart" handler
+            this.game.input.onTap.addOnce(restart, this);
+        }
+    },
+
+    restart: function() {
+        //  A new level starts
+        this.score = 0;
+        this.scoreText.text = this.scoreString + this.score + ' out of 10';
+        
+        //  And brings the aliens back from the dead :)
+        this.book1.revive();
+        this.book2.revive();
+        this.book3.revive();
+        this.book4.revive();
+        this.book5.revive();
+
+        //resets the player
+        this.pfeet.reset();
+        this.pbody.reset();
+
+        //restart the music
+        this.music.restart();
+
+        //hides the text
+        this.stateText.visible = false;
+        //scoreText.text = scoreString + score;
     },
 
     update: function () {
@@ -157,8 +208,8 @@ BasicGame.Game.prototype = {
         this.game.physics.arcade.collide(this.pfeet, this.layer);
         //this.game.physics.arcade.collide(this.pbody, this.layer);
 
-        this.pfeet.animations.stop();
-        this.pbody.animations.stop();
+        //this.pfeet.animations.stop();
+        //this.pbody.animations.stop();
 
         this.pfeet.body.velocity.x = 0;
         this.pfeet.body.velocity.y = 0;
@@ -191,6 +242,12 @@ BasicGame.Game.prototype = {
         this.pbody.y = this.pfeet.y;
 
         //this.pbody.rotation = this.pfeet.rotation;
+
+        this.game.physics.arcade.overlap(this.pfeet, this.book1, collectBook, null, this);
+        this.game.physics.arcade.overlap(this.pfeet, this.book2, collectBook, null, this);
+        this.game.physics.arcade.overlap(this.pfeet, this.book3, collectBook, null, this);
+        this.game.physics.arcade.overlap(this.pfeet, this.book4, collectBook, null, this);
+        this.game.physics.arcade.overlap(this.pfeet, this.book5, collectBook, null, this);
     },
 
     quitGame: function (pointer) {
