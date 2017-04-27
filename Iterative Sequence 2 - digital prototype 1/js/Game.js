@@ -88,27 +88,27 @@ BasicGame.Game.prototype = {
 
         this.pfeet = this.game.add.sprite(888, 648, 'feet', 'f0001');
         this.pfeet.anchor.setTo(0.5, 0.5);
-        this.pfeet.animations.add('bWalk', Phaser.Animation.generateFrameNames('f', 1, 20, '', 4), 20, true, false);
+        this.pfeet.animations.add('bWalk', Phaser.Animation.generateFrameNames('f', 1, 20, '', 4), 10, true, false);
         this.pfeet.scale.setTo(0.20, 0.20);
         //this.pfeet.animations.play('bWalk');
         this.game.physics.enable(this.pfeet, Phaser.Physics.ARCADE);
         this.pfeet.body.collideWorldBounds = true;
-        this.pfeet.body.setSize(20, 32, 5, 16);
+        this.pfeet.body.setSize(24, 24, 5, 0);
 
         this.pbody = this.game.add.sprite(888, 648, 'body', 'b0001');
         this.pbody.anchor.setTo(0.3, 0.5);
-        this.pbody.animations.add('tWalk', Phaser.Animation.generateFrameNames('b', 1, 20, '', 4), 20, true, false);
+        this.pbody.animations.add('tWalk', Phaser.Animation.generateFrameNames('b', 1, 20, '', 4), 10, true, false);
         this.pbody.scale.setTo(0.20, 0.20);
         //this.pbody.animations.play('tWalk');
         this.game.physics.enable(this.pbody, Phaser.Physics.ARCADE);
         this.pbody.body.collideWorldBounds = true;
-        this.pbody.body.setSize(20, 32, 5, 16);
+        this.pbody.body.setSize(24, 24, 18, 11);
 
         this.pfeet.body.maxAngular = 500;
-        this.pfeet.body.angularDrag = 50;
+        this.pfeet.body.angularDrag = 75;
 
         this.pbody.body.maxAngular = 500;
-        this.pbody.body.angularDrag = 50;
+        this.pbody.body.angularDrag = 75;
 
         this.game.camera.follow(this.pbody);
 
@@ -124,11 +124,11 @@ BasicGame.Game.prototype = {
         this.book3.animations.add('pturn3', [0, 1, 2, 3, 4, 5, 6, 7, 8], 10, true);
         this.book3.scale.setTo(0.25, 0.25);
         this.book3.animations.play('pturn3');
-        this.book4 = this.game.add.sprite(96, 384, 'book');
+        this.book4 = this.game.add.sprite(96, 395, 'book');
         this.book4.animations.add('pturn4', [0, 1, 2, 3, 4, 5, 6, 7, 8], 10, true);
         this.book4.scale.setTo(0.25, 0.25);
         this.book4.animations.play('pturn4');
-        this.book5 = this.game.add.sprite(456, 672, 'book');
+        this.book5 = this.game.add.sprite(456, 668, 'book');
         this.book5.animations.add('pturn5', [0, 1, 2, 3, 4, 5, 6, 7, 8], 10, true);
         this.book5.scale.setTo(0.25, 0.25);
         this.book5.animations.play('pturn5');
@@ -169,22 +169,22 @@ BasicGame.Game.prototype = {
         this.pbody.body.angularVelocity = 0;
 
         if (this.cursors.left.isDown) {
-            this.pfeet.body.angularVelocity = -200;
-            this.pbody.body.angularVelocity = -200;
+            this.pfeet.body.angularVelocity = -150;
+            this.pbody.body.angularVelocity = -150;
         }
         else if (this.cursors.right.isDown) {
-            this.pfeet.body.angularVelocity = 200;
-            this.pbody.body.angularVelocity = 200;
+            this.pfeet.body.angularVelocity = 150;
+            this.pbody.body.angularVelocity = 150;
         }
         if (this.cursors.up.isDown) {
-            this.game.physics.arcade.velocityFromAngle(this.pfeet.angle, 200, this.pfeet.body.velocity);
-            this.game.physics.arcade.velocityFromAngle(this.pbody.angle, 200, this.pbody.body.velocity);
+            this.game.physics.arcade.velocityFromAngle(this.pfeet.angle, 150, this.pfeet.body.velocity);
+            this.game.physics.arcade.velocityFromAngle(this.pbody.angle, 150, this.pbody.body.velocity);
             this.pfeet.animations.play('bWalk');
             this.pbody.animations.play('tWalk');
         }
         else if (this.cursors.down.isDown) {
-            //this.pfeet.y += 2;
-            //this.pbody.y += 2;
+            this.game.physics.arcade.velocityFromAngle(this.pfeet.angle, -150, this.pfeet.body.velocity);
+            this.game.physics.arcade.velocityFromAngle(this.pbody.angle, -150, this.pbody.body.velocity);
         }
 
         this.pbody.x = this.pfeet.x;
