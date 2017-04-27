@@ -174,8 +174,6 @@ BasicGame.Game.prototype = {
         this.game.physics.arcade.collide(this.pfeet, this.layer);
         //this.game.physics.arcade.collide(this.pbody, this.layer);
 
-        //this.pfeet.animations.stop();
-        //this.pbody.animations.stop();
 
         this.pfeet.body.velocity.x = 0;
         this.pfeet.body.velocity.y = 0;
@@ -202,6 +200,8 @@ BasicGame.Game.prototype = {
         else if (this.cursors.down.isDown) {
             this.game.physics.arcade.velocityFromAngle(this.pfeet.angle, -150, this.pfeet.body.velocity);
             this.game.physics.arcade.velocityFromAngle(this.pbody.angle, -150, this.pbody.body.velocity);
+            this.pfeet.animations.stop();
+            this.pbody.animations.stop();
         }
 
         this.pbody.x = this.pfeet.x;
