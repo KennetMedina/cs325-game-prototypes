@@ -258,12 +258,12 @@ BasicGame.Game.prototype = {
         this.book5.revive();
 
         //  resets the player
-        //this.pfeet.reset();
-        //this.pbody.reset();
-        this.pfeet.kill();
-        this.pbody.kill();
-        this.pfeet.revive();
-        this.pbody.revive();
+        this.pfeet.reset();
+        this.pbody.reset();
+        //this.pfeet.kill();
+        //this.pbody.kill();
+        //this.pfeet.revive();
+        //this.pbody.revive();
 
         //restart the music
         this.music.restart();
