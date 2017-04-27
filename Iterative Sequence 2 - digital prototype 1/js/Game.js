@@ -152,48 +152,6 @@ BasicGame.Game.prototype = {
 
     },
 
-    collectBook: function (pfeet, book) {
-        this.score += 1;
-        this.scoreText.text = this.scoreString + this.score + ' out of 10';
-        book.kill();
-
-        if (this.score === 5) {
-            //score += 1000;
-            this.scoreText.text = this.scoreString + this.score + ' out of 10';
-
-            this.stateText.text = " You Won, \n Click to restart";
-            this.stateText.fixedToCamera = true;
-            this.stateText.visible = true;
-
-            //the "click to restart" handler
-            this.game.input.onTap.addOnce(restart, this);
-        }
-    },
-
-    restart: function() {
-        //  A new level starts
-        this.score = 0;
-        this.scoreText.text = this.scoreString + this.score + ' out of 10';
-        
-        //  And brings the aliens back from the dead :)
-        this.book1.revive();
-        this.book2.revive();
-        this.book3.revive();
-        this.book4.revive();
-        this.book5.revive();
-
-        //resets the player
-        this.pfeet.reset();
-        this.pbody.reset();
-
-        //restart the music
-        this.music.restart();
-
-        //hides the text
-        this.stateText.visible = false;
-        //scoreText.text = scoreString + score;
-    },
-
     update: function () {
 
         //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
@@ -258,6 +216,48 @@ BasicGame.Game.prototype = {
         //  Then let's go back to the main menu.
         this.state.start('MainMenu');
 
+    },
+
+    collectBook: function (pfeet, book) {
+        this.score += 1;
+        this.scoreText.text = this.scoreString + this.score + ' out of 10';
+        book.kill();
+
+        if (this.score === 5) {
+        //score += 1000;
+            this.scoreText.text = this.scoreString + this.score + ' out of 10';
+
+            this.stateText.text = " You Won, \n Click to restart";
+            this.stateText.fixedToCamera = true;
+            this.stateText.visible = true;
+
+        //the "click to restart" handler
+            this.game.input.onTap.addOnce(restart, this);
+        }
+    },
+
+    restart: function () {
+        //  A new level starts
+        this.score = 0;
+        this.scoreText.text = this.scoreString + this.score + ' out of 10';
+        
+        //  And brings the aliens back from the dead :)
+        this.book1.revive();
+        this.book2.revive();
+        this.book3.revive();
+        this.book4.revive();
+        this.book5.revive();
+
+        //resets the player
+        this.pfeet.reset();
+        this.pbody.reset();
+
+        //restart the music
+        this.music.restart();
+
+        //hides the text
+        this.stateText.visible = false;
+        //scoreText.text = scoreString + score;
     }
 
 };
