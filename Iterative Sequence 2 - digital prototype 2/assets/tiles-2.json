@@ -1,0 +1,11 @@
+{ "columns":23,
+ "image":"tiles-2.png",
+ "imageheight":360,
+ "imagewidth":552,
+ "margin":0,
+ "name":"tiles-2",
+ "spacing":0,
+ "tilecount":345,
+ "tileheight":24,
+ "tilewidth":24
+}
