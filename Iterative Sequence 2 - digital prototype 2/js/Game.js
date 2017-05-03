@@ -267,12 +267,8 @@ BasicGame.Game.prototype = {
         this.book5.revive();
 
         //  resets the player
-        this.pfeet.reset();
-        this.pbody.reset();
-        this.pfeet.x = 888;
-        this.pfeet.y = 648;
-        this.pbody.x = 888;
-        this.pbody.y = 648;
+        this.pfeet.reset(888, 648);
+        this.pbody.reset(888, 648);
         //this.pfeet.kill();
         //this.pbody.kill();
         //this.pfeet.revive();
