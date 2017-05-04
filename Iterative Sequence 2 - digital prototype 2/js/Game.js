@@ -108,8 +108,7 @@ BasicGame.Game.prototype = {
         this.maskGraphics = this.game.add.graphics(0, 0);
         //this.background.mask = this.maskGraphics;
         //this.layer.mask = this.maskGraphics;
-        this.floor.mask = this.maskGraphics;
-        this.wallsBmd.mask = this.maskGraphics;
+        
 
         this.pfeet = this.game.add.sprite(888, 648, 'feet', 'f0001');
         this.pfeet.anchor.setTo(0.5, 0.5);
@@ -177,6 +176,10 @@ BasicGame.Game.prototype = {
         this.stateText.visible = false;
 
         this.cursors = this.game.input.keyboard.createCursorKeys();
+
+
+        this.floor.mask = this.maskGraphics;
+        this.wallsBmd.mask = this.maskGraphics;
 
     },
 
