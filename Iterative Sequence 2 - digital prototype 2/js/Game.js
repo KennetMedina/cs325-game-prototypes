@@ -181,17 +181,7 @@ BasicGame.Game.prototype = {
 
     update: function () {
 
-        //  Honestly, just about anything could go here. It's YOUR game after all. Eat your heart out!
-        
-        // Accelerate the 'logo' sprite towards the cursor,
-        // accelerating at 500 pixels/second and moving no faster than 500 pixels/second
-        // in X or Y.
-        // This function returns the rotation angle that makes it visually match its
-        // new trajectory.
-        //this.bouncy.rotation = this.game.physics.arcade.accelerateToPointer( this.bouncy, this.game.input.activePointer, 500, 500, 500 );
-
-        this.game.physics.arcade.collide(this.pfeet, this.layer);
-        //this.game.physics.arcade.collide(this.pbody, this.layer);
+        //this.game.physics.arcade.collide(this.pfeet, this.layer);
 
 
         this.pfeet.body.velocity.x = 0;
@@ -259,7 +249,7 @@ BasicGame.Game.prototype = {
         }
         this.maskGraphics.lineTo(this.pbody.x, this.pbody.y);
         this.maskGraphics.endFill();
-        this.background.alpha = 0.5 + Math.random() * 0.5;
+        //this.background.alpha = 0.5 + Math.random() * 0.5;
 
         //this.pbody.rotation = this.pfeet.rotation;
 
