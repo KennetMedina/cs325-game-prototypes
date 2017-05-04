@@ -135,7 +135,7 @@ BasicGame.Game.prototype = {
         this.pbody.body.maxAngular = 500;
         this.pbody.body.angularDrag = 75;
 
-        this.game.camera.follow(this.pbody);
+        //this.game.camera.follow(this.pfeet);
 
         //this.books = this.game.add.group();
 
