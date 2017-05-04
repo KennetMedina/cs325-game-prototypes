@@ -226,7 +226,7 @@ BasicGame.Game.prototype = {
             speedY -= 2;
             this.pfeet.animations.play('bWalk');
             this.pbody.animations.play('tWalk');
-            this.isIdle = false;
+            //this.isIdle = false;
         }
         else if (this.cursors.down.isDown) {
             //this.game.physics.arcade.velocityFromAngle(this.pfeet.angle, -150, this.pfeet.body.velocity);
@@ -234,7 +234,7 @@ BasicGame.Game.prototype = {
             speedY += 2;
             this.pfeet.animations.play('bWalk');
             this.pbody.animations.play('tWalk');
-            this.isIdle = false;
+            //this.isIdle = false;
         }
         if (this.isIdle !== true) {
                 this.pfeet.animations.stop();
