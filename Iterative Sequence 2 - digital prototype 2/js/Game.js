@@ -208,6 +208,8 @@ BasicGame.Game.prototype = {
             //this.pbody.body.angularVelocity = -150;
             speedX -= 2;
             this.pfeet.rotation = this.game.physics.arcade.angleToPointer(this.pfeet);
+            this.pfeet.animations.play('bWalk');
+            this.pbody.animations.play('tWalk');
 
         }
         else if (this.cursors.right.isDown) {
@@ -215,6 +217,8 @@ BasicGame.Game.prototype = {
             //this.pbody.body.angularVelocity = 150;
             speedX += 2;
             this.pfeet.rotation = this.game.physics.arcade.angleToPointer(this.pfeet);
+            this.pfeet.animations.play('bWalk');
+            this.pbody.animations.play('tWalk');
         }
         if (this.cursors.up.isDown) {
             //this.game.physics.arcade.velocityFromAngle(this.pfeet.angle, 150, this.pfeet.body.velocity);
@@ -228,8 +232,8 @@ BasicGame.Game.prototype = {
             //this.game.physics.arcade.velocityFromAngle(this.pfeet.angle, -150, this.pfeet.body.velocity);
             //this.game.physics.arcade.velocityFromAngle(this.pbody.angle, -150, this.pbody.body.velocity);
             speedY += 2;
-            this.pfeet.animations.stop();
-            this.pbody.animations.stop();
+            this.pfeet.animations.play('bWalk');
+            this.pbody.animations.play('tWalk');
             this.isIdle = false;
         }
         if (this.isIdle !== true) {
