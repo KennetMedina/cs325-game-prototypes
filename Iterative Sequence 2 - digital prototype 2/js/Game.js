@@ -41,6 +41,7 @@ BasicGame.Game = function (game) {
     this.cursors = null;
     this.isIdle = true;
     this.wallsBmd = null;
+    this.floor = null;
     this.lightAngle = Math.PI / 4;
     this.numOfRays = 20;
     this.rayLen = 100;
@@ -86,7 +87,7 @@ BasicGame.Game.prototype = {
 
         this.music = this.game.add.audio('mainMusic');
         this.music.play();
-
+        /*
         this.map = this.game.add.tilemap('maze');
         this.map.addTilesetImage('tiles-2');
         this.background = this.map.createLayer('background');
@@ -95,6 +96,8 @@ BasicGame.Game.prototype = {
         this.map.setCollision([0, 117], true, this.layer);
         this.layer.resizeWorld();
         //this.background.resizeWorld();
+        */
+        this.floor = this.game.add.sprite(0, 0, 'floor');
 
         // bitmapdata
         this.wallsBmd = this.game.make.bitmapData(960, 720);
@@ -103,8 +106,8 @@ BasicGame.Game.prototype = {
         this.game.add.sprite(0, 0, this.wallsBmd);
 
         this.maskGraphics = this.game.add.graphics(0, 0);
-        this.background.mask = this.maskGraphics;
-        this.layer.mask = this.maskGraphics;
+        //this.background.mask = this.maskGraphics;
+        //this.layer.mask = this.maskGraphics;
         this.wallsBmd.mask = this.maskGraphics;
 
         this.pfeet = this.game.add.sprite(888, 648, 'feet', 'f0001');
