@@ -210,7 +210,7 @@ BasicGame.Game.prototype = {
             this.pfeet.rotation = this.game.physics.arcade.angleToPointer(this.pfeet);
 
         }
-        else if (this.cursors.right.isDown) {
+        if (this.cursors.right.isDown) {
            // this.pfeet.body.angularVelocity = 150;
             //this.pbody.body.angularVelocity = 150;
             speedX += 2;
@@ -224,7 +224,7 @@ BasicGame.Game.prototype = {
             this.pbody.animations.play('tWalk');
             this.isIdle = false;
         }
-        else if (this.cursors.down.isDown) {
+        if (this.cursors.down.isDown) {
             //this.game.physics.arcade.velocityFromAngle(this.pfeet.angle, -150, this.pfeet.body.velocity);
             //this.game.physics.arcade.velocityFromAngle(this.pbody.angle, -150, this.pbody.body.velocity);
             speedY += 2;
@@ -232,7 +232,7 @@ BasicGame.Game.prototype = {
             this.pbody.animations.stop();
             this.isIdle = false;
         }
-        else if (this.isIdle !== true) {
+        if (this.isIdle !== true) {
                 this.pfeet.animations.stop();
                 this.pbody.animations.stop();
                 
@@ -243,7 +243,7 @@ BasicGame.Game.prototype = {
             color += this.wallsBmd.getPixel32(this.pfeet.x + speedX - this.pfeet.width / 2, this.pfeet.y + speedY + this.pfeet.height / 2);
             color += this.wallsBmd.getPixel32(this.pfeet.x + speedX - this.pfeet.width / 2, this.pfeet.y + speedY - this.pfeet.height / 2);
             color += this.wallsBmd.getPixel32(this.pfeet.x + speedX + this.pfeet.width / 2, this.pfeet.y + speedY - this.pfeet.height / 2);
-            if (color == 0) {
+            if (color != 0) {
                 this.pfeet.x += speedX;
                 this.pfeet.y += speedY;
             }
