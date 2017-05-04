@@ -231,12 +231,13 @@ BasicGame.Game.prototype = {
         this.pbody.x = this.pfeet.x;
         this.pbody.y = this.pfeet.y;
 
+        var mouseAngle = Math.atan2(this.pbody.y - this.game.input.y, this.pbody.x - this.game.input.x);
         this.maskGraphics.clear();
         this.maskGraphics.lineStyle(2, 0xffffff, 1);
         this.maskGraphics.beginFill(0xffff00);
         this.maskGraphics.moveTo(this.pbody.x, this.pbody.y);
         for (var i = 0; i < this.numOfRays; i++) {
-            var rayAngle = this.pbody.angle - (this.lightAngle / 2) + (this.lightAngle / this.numOfRays) * i;
+            var rayAngle = mouseAngle - (this.lightAngle / 2) + (this.lightAngle / this.numOfRays) * i;
             var lastX = this.pbody.x;
             var lastY = this.pbody.y;
             for (var j = 1; j <= this.rayLen; j += 1) {
