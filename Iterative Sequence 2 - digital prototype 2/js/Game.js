@@ -230,9 +230,19 @@ BasicGame.Game.prototype = {
                 
                 this.isIdle = true;
         }
+        if (Math.abs(speedX) + Math.abs(speedY) < 4 && Math.abs(speedX) + Math.abs(speedY) > 0) {
+            var color = this.wallsBmd.getPixel32(this.pfeet.x + speedX + this.pfeet.width / 2, this.pfeet.y + speedY + this.pfeet.height / 2);
+            color += this.wallsBmd.getPixel32(this.pfeet.x + speedX - this.pfeet.width / 2, this.pfeet.y + speedY + this.pfeet.height / 2);
+            color += wallsBitmap.getPixel32(this.pfeet.x + speedX - this.pfeet.width / 2, this.pfeet.y + speedY - this.pfeet.height / 2)
+            color += wallsBitmap.getPixel32(this.pfeet.x + speedX + this.pfeet.width / 2, this.pfeet.y + speedY - this.pfeet.height / 2)
+            if (color == 0xbababa) {
+                this.pfeet.x += speedX;
+                this.pfeet.y += speedY;
+            }
+        }
 
-        this.pfeet.x += speedX;
-        this.pfeet.y += speedY;
+        //this.pfeet.x += speedX;
+        //this.pfeet.y += speedY;
         this.pbody.x = this.pfeet.x;
         this.pbody.y = this.pfeet.y;
         this.pbody.rotation = this.game.physics.arcade.angleToPointer(this.pbody);
@@ -249,7 +259,7 @@ BasicGame.Game.prototype = {
             for (var j = 1; j <= this.rayLen; j += 1) {
                 var landingX = Math.round(this.pbody.x - (2 * j) * Math.cos(rayAngle));
                 var landingY = Math.round(this.pbody.y - (2 * j) * Math.sin(rayAngle));
-                if (this.wallsBmd.getPixel32(landingX, landingY) == 0x01bababa) {
+                if (this.wallsBmd.getPixel32(landingX, landingY) == 0xbababa) {
                     lastX = landingX;
                     lastY = landingY;
                 }
