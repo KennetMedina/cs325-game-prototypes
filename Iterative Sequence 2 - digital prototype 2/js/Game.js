@@ -102,9 +102,10 @@ BasicGame.Game.prototype = {
         this.wallsBmd.update();
         this.game.add.sprite(0, 0, this.wallsBmd);
 
-        this.maskGraphics = this.game.add.graphics(0, 0);
+        this.maskGraphics = this.game.add.graphics(this.game, 0, 0);
         this.background.mask = this.maskGraphics;
         this.layer.mask = this.maskGraphics;
+        this.wallsBmd.mask = this.maskGraphics;
 
         this.pfeet = this.game.add.sprite(888, 648, 'feet', 'f0001');
         this.pfeet.anchor.setTo(0.5, 0.5);
