@@ -207,7 +207,7 @@ BasicGame.Game.prototype = {
             //this.pfeet.body.angularVelocity = -150;
             //this.pbody.body.angularVelocity = -150;
             speedX -= 2;
-            this.pfeet.rotation = this.game.physics.arcade.angleToPointer(this.pfeet);
+            //this.pfeet.rotation = this.game.physics.arcade.angleToPointer(this.pfeet);
             this.pfeet.animations.play('bWalk');
             this.pbody.animations.play('tWalk');
             this.isIdle = false;
@@ -216,7 +216,7 @@ BasicGame.Game.prototype = {
            // this.pfeet.body.angularVelocity = 150;
             //this.pbody.body.angularVelocity = 150;
             speedX += 2;
-            this.pfeet.rotation = this.game.physics.arcade.angleToPointer(this.pfeet);
+            //this.pfeet.rotation = this.game.physics.arcade.angleToPointer(this.pfeet);
             this.pfeet.animations.play('bWalk');
             this.pbody.animations.play('tWalk');
             this.isIdle = false;
@@ -225,7 +225,7 @@ BasicGame.Game.prototype = {
             //this.game.physics.arcade.velocityFromAngle(this.pfeet.angle, 150, this.pfeet.body.velocity);
             //this.game.physics.arcade.velocityFromAngle(this.pbody.angle, 150, this.pbody.body.velocity);
             speedY -= 2;
-            this.pfeet.rotation = this.game.physics.arcade.angleToPointer(this.pfeet);
+            //this.pfeet.rotation = this.game.physics.arcade.angleToPointer(this.pfeet);
             this.pfeet.animations.play('bWalk');
             this.pbody.animations.play('tWalk');
             this.isIdle = false;
@@ -234,7 +234,7 @@ BasicGame.Game.prototype = {
             //this.game.physics.arcade.velocityFromAngle(this.pfeet.angle, -150, this.pfeet.body.velocity);
             //this.game.physics.arcade.velocityFromAngle(this.pbody.angle, -150, this.pbody.body.velocity);
             speedY += 2;
-            this.pfeet.rotation = this.game.physics.arcade.angleToPointer(this.pfeet);
+            //this.pfeet.rotation = this.game.physics.arcade.angleToPointer(this.pfeet);
             this.pfeet.animations.play('bWalk');
             this.pbody.animations.play('tWalk');
             this.isIdle = false;
@@ -289,7 +289,7 @@ BasicGame.Game.prototype = {
         this.maskGraphics.endFill();
         this.floor.alpha = 0.5 + Math.random() * 0.5;
 
-        //this.pbody.rotation = this.pfeet.rotation;
+        this.pfeet.rotation = this.pbody.rotation;
 
         this.game.physics.arcade.overlap(this.pfeet, this.book1, this.collectBook, null, this);
         this.game.physics.arcade.overlap(this.pfeet, this.book2, this.collectBook, null, this);
