@@ -127,11 +127,11 @@ BasicGame.Game.prototype = {
         this.pbody.body.collideWorldBounds = true;
         this.pbody.body.setSize(24, 24, 18, 11);
 
-        this.pfeet.body.maxAngular = 500;
-        this.pfeet.body.angularDrag = 75;
+        //this.pfeet.body.maxAngular = 500;
+        //this.pfeet.body.angularDrag = 75;
 
-        this.pbody.body.maxAngular = 500;
-        this.pbody.body.angularDrag = 75;
+        //this.pbody.body.maxAngular = 500;
+        //.pbody.body.angularDrag = 75;
 
         //this.game.camera.follow(this.pfeet);
 
@@ -178,12 +178,12 @@ BasicGame.Game.prototype = {
 
 
         this.maskGraphics = this.game.add.graphics(0, 0);
-        this.floor.mask = this.maskGraphics
-        this.book1.mask = this.maskGraphics
-        this.book2.mask = this.maskGraphics
-        this.book3.mask = this.maskGraphics
-        this.book4.mask = this.maskGraphics
-        this.book5.mask = this.maskGraphics
+        //this.floor.mask = this.maskGraphics;
+        //this.book1.mask = this.maskGraphics;
+        //this.book2.mask = this.maskGraphics;
+        //this.book3.mask = this.maskGraphics;
+        //this.book4.mask = this.maskGraphics;
+        //this.book5.mask = this.maskGraphics;
         //this.wallsBmd.mask = this.maskGraphics;
 
     },
@@ -241,9 +241,9 @@ BasicGame.Game.prototype = {
         if (Math.abs(speedX) + Math.abs(speedY) < 2 && Math.abs(speedX) + Math.abs(speedY) > 0) {
             var color = this.wallsBmd.getPixel32(this.pfeet.x + speedX + this.pfeet.width / 2, this.pfeet.y + speedY + this.pfeet.height / 2);
             color += this.wallsBmd.getPixel32(this.pfeet.x + speedX - this.pfeet.width / 2, this.pfeet.y + speedY + this.pfeet.height / 2);
-            color += this.wallsBmd.getPixel32(this.pfeet.x + speedX - this.pfeet.width / 2, this.pfeet.y + speedY - this.pfeet.height / 2)
-            color += this.wallsBmd.getPixel32(this.pfeet.x + speedX + this.pfeet.width / 2, this.pfeet.y + speedY - this.pfeet.height / 2)
-            if (color == 0) {
+            color += this.wallsBmd.getPixel32(this.pfeet.x + speedX - this.pfeet.width / 2, this.pfeet.y + speedY - this.pfeet.height / 2);
+            color += this.wallsBmd.getPixel32(this.pfeet.x + speedX + this.pfeet.width / 2, this.pfeet.y + speedY - this.pfeet.height / 2);
+            if (color === 0) {
                 this.pfeet.x += speedX;
                 this.pfeet.y += speedY;
             }
@@ -267,7 +267,7 @@ BasicGame.Game.prototype = {
             for (var j = 1; j <= this.rayLen; j += 1) {
                 var landingX = Math.round(this.pbody.x - (2 * j) * Math.cos(rayAngle));
                 var landingY = Math.round(this.pbody.y - (2 * j) * Math.sin(rayAngle));
-                if (this.wallsBmd.getPixel32(landingX, landingY) == 0) {
+                if (this.wallsBmd.getPixel32(landingX, landingY) === 0) {
                     lastX = landingX;
                     lastY = landingY;
                 }
@@ -280,7 +280,7 @@ BasicGame.Game.prototype = {
         }
         this.maskGraphics.lineTo(this.pbody.x, this.pbody.y);
         this.maskGraphics.endFill();
-        this.floor.alpha = 0.5 + Math.random() * 0.5;
+        //this.floor.alpha = 0.5 + Math.random() * 0.5;
 
         //this.pbody.rotation = this.pfeet.rotation;
 
