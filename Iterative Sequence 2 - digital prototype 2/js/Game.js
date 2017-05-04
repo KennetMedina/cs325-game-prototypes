@@ -221,6 +221,12 @@ BasicGame.Game.prototype = {
             this.pbody.animations.play('tWalk');
             this.isIdle = false;
         }
+        else if (this.isIdle !== true) {
+            this.pfeet.animations.stop();
+            this.pbody.animations.stop();
+
+            this.isIdle = true;
+        }
         if (this.cursors.up.isDown) {
             //this.game.physics.arcade.velocityFromAngle(this.pfeet.angle, 150, this.pfeet.body.velocity);
             //this.game.physics.arcade.velocityFromAngle(this.pbody.angle, 150, this.pbody.body.velocity);
@@ -240,10 +246,10 @@ BasicGame.Game.prototype = {
             this.isIdle = false;
         }
         else if (this.isIdle !== true) {
-                this.pfeet.animations.stop();
-                this.pbody.animations.stop();
-                
-                this.isIdle = true;
+            this.pfeet.animations.stop();
+            this.pbody.animations.stop();
+
+            this.isIdle = true;
         }
         if (Math.abs(speedX) + Math.abs(speedY) < 4 && Math.abs(speedX) + Math.abs(speedY) > 0) {
             var color = this.wallsBmd.getPixel32(Math.round(this.pfeet.x + speedX + this.pfeet.width / 2), Math.round(this.pfeet.y + speedY + this.pfeet.height / 2));
