@@ -178,7 +178,12 @@ BasicGame.Game.prototype = {
 
 
         this.maskGraphics = this.game.add.graphics(0, 0);
-        //this.floor.mask = this.maskGraphics;
+        this.floor.mask = this.maskGraphics;
+        this.book1.mask = this.maskGraphics;
+        this.book2.mask = this.maskGraphics;
+        this.book3.mask = this.maskGraphics;
+        this.book4.mask = this.maskGraphics;
+        this.book5.mask = this.maskGraphics;
         //this.wallsBmd.mask = this.maskGraphics;
 
     },
