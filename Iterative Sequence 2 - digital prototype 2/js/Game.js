@@ -102,7 +102,7 @@ BasicGame.Game.prototype = {
         this.wallsBmd.update();
         this.game.add.sprite(0, 0, this.wallsBmd);
 
-        this.maskGraphics = this.game.add.graphics(this.game, 0, 0);
+        this.maskGraphics = this.game.add.graphics(0, 0);
         this.background.mask = this.maskGraphics;
         this.layer.mask = this.maskGraphics;
         this.wallsBmd.mask = this.maskGraphics;
