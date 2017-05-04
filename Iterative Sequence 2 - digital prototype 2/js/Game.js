@@ -178,8 +178,8 @@ BasicGame.Game.prototype = {
         this.cursors = this.game.input.keyboard.createCursorKeys();
 
 
-        this.floor.mask = this.maskGraphics;
-        this.wallsBmd.mask = this.maskGraphics;
+        //this.floor.mask = this.maskGraphics;
+        //this.wallsBmd.mask = this.maskGraphics;
 
     },
 
