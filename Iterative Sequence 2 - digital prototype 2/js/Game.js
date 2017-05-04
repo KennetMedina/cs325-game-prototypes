@@ -276,7 +276,7 @@ BasicGame.Game.prototype = {
         }
         this.maskGraphics.lineTo(this.pbody.x, this.pbody.y);
         this.maskGraphics.endFill();
-        //this.background.alpha = 0.5 + Math.random() * 0.5;
+        this.floor.alpha = 0.5 + Math.random() * 0.5;
 
         //this.pbody.rotation = this.pfeet.rotation;
 
