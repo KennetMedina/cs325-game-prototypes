@@ -206,20 +206,20 @@ BasicGame.Game.prototype = {
         if (this.cursors.left.isDown) {
             //this.pfeet.body.angularVelocity = -150;
             //this.pbody.body.angularVelocity = -150;
-            speedX -= 1;
+            speedX -= 2;
             this.pfeet.rotation = this.game.physics.arcade.angleToPointer(this.pfeet);
 
         }
         else if (this.cursors.right.isDown) {
            // this.pfeet.body.angularVelocity = 150;
             //this.pbody.body.angularVelocity = 150;
-            speedX += 1;
+            speedX += 2;
             this.pfeet.rotation = this.game.physics.arcade.angleToPointer(this.pfeet);
         }
         if (this.cursors.up.isDown) {
             //this.game.physics.arcade.velocityFromAngle(this.pfeet.angle, 150, this.pfeet.body.velocity);
             //this.game.physics.arcade.velocityFromAngle(this.pbody.angle, 150, this.pbody.body.velocity);
-            speedY -= 1;
+            speedY -= 2;
             this.pfeet.animations.play('bWalk');
             this.pbody.animations.play('tWalk');
             this.isIdle = false;
@@ -227,7 +227,7 @@ BasicGame.Game.prototype = {
         else if (this.cursors.down.isDown) {
             //this.game.physics.arcade.velocityFromAngle(this.pfeet.angle, -150, this.pfeet.body.velocity);
             //this.game.physics.arcade.velocityFromAngle(this.pbody.angle, -150, this.pbody.body.velocity);
-            speedY += 1;
+            speedY += 2;
             this.pfeet.animations.stop();
             this.pbody.animations.stop();
             this.isIdle = false;
@@ -238,12 +238,11 @@ BasicGame.Game.prototype = {
                 
                 this.isIdle = true;
         }
-        if (Math.abs(speedX) + Math.abs(speedY) < 2 && Math.abs(speedX) + Math.abs(speedY) > 0) {
+        if (Math.abs(speedX) + Math.abs(speedY) < 4 && Math.abs(speedX) + Math.abs(speedY) > 0) {
             var color = this.wallsBmd.getPixel32(this.pfeet.x + speedX + this.pfeet.width / 2, this.pfeet.y + speedY + this.pfeet.height / 2);
             color += this.wallsBmd.getPixel32(this.pfeet.x + speedX - this.pfeet.width / 2, this.pfeet.y + speedY + this.pfeet.height / 2);
-            color += this.wallsBmd.getPixel32(this.pfeet.x + speedX - this.pfeet.width / 2, this.pfeet.y + speedY - this.pfeet.height / 2)
-            color += this.wallsBmd.getPixel32(this.pfeet.x + speedX + this.pfeet.width / 2, this.pfeet.y + speedY - this.pfeet.height / 2)
-            console.error('color is ' + color);
+            color += this.wallsBmd.getPixel32(this.pfeet.x + speedX - this.pfeet.width / 2, this.pfeet.y + speedY - this.pfeet.height / 2);
+            color += this.wallsBmd.getPixel32(this.pfeet.x + speedX + this.pfeet.width / 2, this.pfeet.y + speedY - this.pfeet.height / 2);
             if (color == 0) {
                 this.pfeet.x += speedX;
                 this.pfeet.y += speedY;
