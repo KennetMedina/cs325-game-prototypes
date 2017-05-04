@@ -210,7 +210,7 @@ BasicGame.Game.prototype = {
             this.pfeet.rotation = this.game.physics.arcade.angleToPointer(this.pfeet);
 
         }
-        if (this.cursors.right.isDown) {
+        else if (this.cursors.right.isDown) {
            // this.pfeet.body.angularVelocity = 150;
             //this.pbody.body.angularVelocity = 150;
             speedX += 2;
@@ -224,7 +224,7 @@ BasicGame.Game.prototype = {
             this.pbody.animations.play('tWalk');
             this.isIdle = false;
         }
-        if (this.cursors.down.isDown) {
+        else if (this.cursors.down.isDown) {
             //this.game.physics.arcade.velocityFromAngle(this.pfeet.angle, -150, this.pfeet.body.velocity);
             //this.game.physics.arcade.velocityFromAngle(this.pbody.angle, -150, this.pbody.body.velocity);
             speedY += 2;
