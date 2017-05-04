@@ -108,6 +108,7 @@ BasicGame.Game.prototype = {
         this.maskGraphics = this.game.add.graphics(0, 0);
         //this.background.mask = this.maskGraphics;
         //this.layer.mask = this.maskGraphics;
+        this.floor.mask = this.maskGraphics;
         this.wallsBmd.mask = this.maskGraphics;
 
         this.pfeet = this.game.add.sprite(888, 648, 'feet', 'f0001');
@@ -193,12 +194,12 @@ BasicGame.Game.prototype = {
         this.pbody.body.angularVelocity = 0;
 
         if (this.cursors.left.isDown) {
-            this.pfeet.body.angularVelocity = -150;
-            this.pbody.body.angularVelocity = -150;
+            //this.pfeet.body.angularVelocity = -150;
+            //this.pbody.body.angularVelocity = -150;
         }
         else if (this.cursors.right.isDown) {
-            this.pfeet.body.angularVelocity = 150;
-            this.pbody.body.angularVelocity = 150;
+           // this.pfeet.body.angularVelocity = 150;
+            //this.pbody.body.angularVelocity = 150;
         }
         if (this.cursors.up.isDown) {
             this.game.physics.arcade.velocityFromAngle(this.pfeet.angle, 150, this.pfeet.body.velocity);
@@ -223,6 +224,7 @@ BasicGame.Game.prototype = {
 
         this.pbody.x = this.pfeet.x;
         this.pbody.y = this.pfeet.y;
+        this.pbody.rotation = this.game.physics.arcade.angleToPointer(this.pbody);
 
         var mouseAngle = Math.atan2(this.pbody.y - this.game.input.y, this.pbody.x - this.game.input.x);
         this.maskGraphics.clear();
