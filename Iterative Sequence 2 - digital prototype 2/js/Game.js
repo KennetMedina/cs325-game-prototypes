@@ -221,12 +221,6 @@ BasicGame.Game.prototype = {
             this.pbody.animations.play('tWalk');
             this.isIdle = false;
         }
-        else if (this.isIdle !== true) {
-            this.pfeet.animations.stop();
-            this.pbody.animations.stop();
-
-            this.isIdle = true;
-        }
         if (this.cursors.up.isDown) {
             //this.game.physics.arcade.velocityFromAngle(this.pfeet.angle, 150, this.pfeet.body.velocity);
             //this.game.physics.arcade.velocityFromAngle(this.pbody.angle, 150, this.pbody.body.velocity);
@@ -245,7 +239,7 @@ BasicGame.Game.prototype = {
             this.pbody.animations.play('tWalk');
             this.isIdle = false;
         }
-        else if (this.isIdle !== true) {
+        if (this.isIdle !== true) {
             this.pfeet.animations.stop();
             this.pbody.animations.stop();
 
