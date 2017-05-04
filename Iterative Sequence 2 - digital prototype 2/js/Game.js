@@ -241,8 +241,8 @@ BasicGame.Game.prototype = {
         if (Math.abs(speedX) + Math.abs(speedY) < 2 && Math.abs(speedX) + Math.abs(speedY) > 0) {
             var color = this.wallsBmd.getPixel32(this.pfeet.x + speedX + this.pfeet.width / 2, this.pfeet.y + speedY + this.pfeet.height / 2);
             color += this.wallsBmd.getPixel32(this.pfeet.x + speedX - this.pfeet.width / 2, this.pfeet.y + speedY + this.pfeet.height / 2);
-            color += this.wallsBmd.getPixel32(this.pfeet.x + speedX - this.pfeet.width / 2, this.pfeet.y + speedY - this.pfeet.height / 2);
-            color += this.wallsBmd.getPixel32(this.pfeet.x + speedX + this.pfeet.width / 2, this.pfeet.y + speedY - this.pfeet.height / 2);
+            color += this.wallsBmd.getPixel32(this.pfeet.x + speedX - this.pfeet.width / 2, this.pfeet.y + speedY - this.pfeet.height / 2)
+            color += this.wallsBmd.getPixel32(this.pfeet.x + speedX + this.pfeet.width / 2, this.pfeet.y + speedY - this.pfeet.height / 2)
             if (color === 0) {
                 this.pfeet.x += speedX;
                 this.pfeet.y += speedY;
