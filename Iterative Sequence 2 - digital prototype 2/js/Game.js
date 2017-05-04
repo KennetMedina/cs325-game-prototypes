@@ -207,14 +207,14 @@ BasicGame.Game.prototype = {
             //this.pfeet.body.angularVelocity = -150;
             //this.pbody.body.angularVelocity = -150;
             speedX -= 2;
-            //this.pfeet.rotation = this.game.physics.arcade.angleToPointer(this.pfeet);
+            this.pfeet.rotation = this.game.physics.arcade.angleToPointer(this.pfeet);
 
         }
         if (this.cursors.right.isDown) {
            // this.pfeet.body.angularVelocity = 150;
             //this.pbody.body.angularVelocity = 150;
             speedX += 2;
-            //this.pfeet.rotation = this.game.physics.arcade.angleToPointer(this.pfeet);
+            this.pfeet.rotation = this.game.physics.arcade.angleToPointer(this.pfeet);
         }
         if (this.cursors.up.isDown) {
             //this.game.physics.arcade.velocityFromAngle(this.pfeet.angle, 150, this.pfeet.body.velocity);
