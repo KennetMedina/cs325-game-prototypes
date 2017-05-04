@@ -97,7 +97,7 @@ BasicGame.Game.prototype = {
         //this.background.resizeWorld();
 
         // bitmapdata
-        this.wallsBmd = game.make.bitmapdata(960, 720);
+        this.wallsBmd = game.make.bitmapData(960, 720);
         this.wallsBmd.draw('walls');
         this.wallsBmd.update();
         this.game.add.sprite(0, 0, wallsBmd);
@@ -230,12 +230,13 @@ BasicGame.Game.prototype = {
 
         this.maskGraphics.clear();
         this.maskGraphics.lineStyle(2, 0xffffff, 1);
+        this.maskGraphics.beginFill(0xffff00);
+        this.maskGraphics.moveTo(this.pbody.x, this.pbody.y);
         for (var i = 0; i < this.numOfRays; i++) {
-            this.maskGraphics.moveTo(this.pbody.x, this.pbody.y);
             var rayAngle = this.pbody.angle - (this.lightAngle / 2) + (this.lightAngle / this.numOfRays) * i;
             var lastX = this.pbody.x;
             var lastY = this.pbody.y;
-            for (var j = 0; j <= this.rayLen; j += 1) {
+            for (var j = 1; j <= this.rayLen; j += 1) {
                 var landingX = Math.round(this.pbody.x - (2 * j) * Math.cos(rayAngle));
                 var landingY = Math.round(this.pbody.y - (2 * j) * Math.sin(rayAngle));
                 if (this.wallsBmd.getPixel32(landingX, landingY) == 0x01bababa) {
@@ -249,6 +250,8 @@ BasicGame.Game.prototype = {
             }
             this.maskGraphics.lineTo(lastX, lastY);
         }
+        this.maskGraphics.lineTo(this.pbody.x, this.pbody.y);
+        this.maskGraphics.endFill();
 
         //this.pbody.rotation = this.pfeet.rotation;
 
