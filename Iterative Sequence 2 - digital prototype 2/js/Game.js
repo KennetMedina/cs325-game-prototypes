@@ -100,9 +100,11 @@ BasicGame.Game.prototype = {
         this.wallsBmd = this.game.make.bitmapData(960, 720);
         this.wallsBmd.draw('walls');
         this.wallsBmd.update();
-        this.game.add.sprite(0, 0, wallsBmd);
+        this.game.add.sprite(0, 0, this.wallsBmd);
 
         this.maskGraphics = this.game.add.graphics(0, 0);
+        this.background.mask = this.maskGraphics;
+        this.layer.mask = this.maskGraphics;
 
         this.pfeet = this.game.add.sprite(888, 648, 'feet', 'f0001');
         this.pfeet.anchor.setTo(0.5, 0.5);
@@ -252,6 +254,7 @@ BasicGame.Game.prototype = {
         }
         this.maskGraphics.lineTo(this.pbody.x, this.pbody.y);
         this.maskGraphics.endFill();
+        this.background.alpha = 0.5 + Math.random() * 0.5;
 
         //this.pbody.rotation = this.pfeet.rotation;
 
