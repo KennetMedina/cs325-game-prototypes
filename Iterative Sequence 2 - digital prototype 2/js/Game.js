@@ -97,7 +97,7 @@ BasicGame.Game.prototype = {
         //this.background.resizeWorld();
 
         // bitmapdata
-        this.wallsBmd = game.make.bitmapData(960, 720);
+        this.wallsBmd = this.game.make.bitmapData(960, 720);
         this.wallsBmd.draw('walls');
         this.wallsBmd.update();
         this.game.add.sprite(0, 0, wallsBmd);
