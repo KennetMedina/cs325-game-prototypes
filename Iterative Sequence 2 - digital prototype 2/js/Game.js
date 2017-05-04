@@ -105,7 +105,6 @@ BasicGame.Game.prototype = {
         this.wallsBmd.update();
         this.game.add.sprite(0, 0, this.wallsBmd);
 
-        this.maskGraphics = this.game.add.graphics(0, 0);
         //this.background.mask = this.maskGraphics;
         //this.layer.mask = this.maskGraphics;
         
@@ -178,7 +177,8 @@ BasicGame.Game.prototype = {
         this.cursors = this.game.input.keyboard.createCursorKeys();
 
 
-        this.floor.mask = this.maskGraphics;
+        this.maskGraphics = this.game.add.graphics(0, 0);
+        //this.floor.mask = this.maskGraphics;
         //this.wallsBmd.mask = this.maskGraphics;
 
     },
@@ -239,7 +239,7 @@ BasicGame.Game.prototype = {
             color += this.wallsBmd.getPixel32(this.pfeet.x + speedX - this.pfeet.width / 2, this.pfeet.y + speedY - this.pfeet.height / 2)
             color += this.wallsBmd.getPixel32(this.pfeet.x + speedX + this.pfeet.width / 2, this.pfeet.y + speedY - this.pfeet.height / 2)
             console.error('color is ' + color);
-            if (color != 0) {
+            if (color == 0) {
                 this.pfeet.x += speedX;
                 this.pfeet.y += speedY;
             }
