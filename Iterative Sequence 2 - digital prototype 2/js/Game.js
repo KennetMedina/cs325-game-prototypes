@@ -98,7 +98,6 @@ BasicGame.Game.prototype = {
         //this.background.resizeWorld();
         */
         this.floor = this.game.add.sprite(0, 0, 'floor');
-        this.floor.resizeWorld();
 
         // bitmapdata
         this.wallsBmd = this.game.make.bitmapData(960, 720);
