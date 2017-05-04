@@ -178,12 +178,12 @@ BasicGame.Game.prototype = {
 
 
         this.maskGraphics = this.game.add.graphics(0, 0);
-        //this.floor.mask = this.maskGraphics;
-        //this.book1.mask = this.maskGraphics;
-        //this.book2.mask = this.maskGraphics;
-        //this.book3.mask = this.maskGraphics;
-        //this.book4.mask = this.maskGraphics;
-        //this.book5.mask = this.maskGraphics;
+        this.floor.mask = this.maskGraphics;
+        this.book1.mask = this.maskGraphics;
+        this.book2.mask = this.maskGraphics;
+        this.book3.mask = this.maskGraphics;
+        this.book4.mask = this.maskGraphics;
+        this.book5.mask = this.maskGraphics;
         //this.wallsBmd.mask = this.maskGraphics;
 
     },
@@ -280,7 +280,7 @@ BasicGame.Game.prototype = {
         }
         this.maskGraphics.lineTo(this.pbody.x, this.pbody.y);
         this.maskGraphics.endFill();
-        //this.floor.alpha = 0.5 + Math.random() * 0.5;
+        this.floor.alpha = 0.5 + Math.random() * 0.5;
 
         //this.pbody.rotation = this.pfeet.rotation;
 
