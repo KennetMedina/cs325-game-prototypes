@@ -40,6 +40,11 @@ BasicGame.Game = function (game) {
     this.background = null;
     this.cursors = null;
     this.isIdle = true;
+    this.wallsBmd = null;
+    this.lightAngle = Math.PI / 4;
+    this.numOfRays = 20;
+    this.rayLen = 100;
+    this.maskGraphics = null;
 
     this.score = 0;
     this.scoreString = 'Books recovered : ';
@@ -89,8 +94,15 @@ BasicGame.Game.prototype = {
         //this.map.setCollisionByExclusion([], true, this.layer);
         this.map.setCollision([0, 117], true, this.layer);
         this.layer.resizeWorld();
-        
         //this.background.resizeWorld();
+
+        // bitmapdata
+        this.wallsBmd = game.make.bitmapdata(960, 720);
+        this.wallsBmd.draw('walls');
+        this.wallsBmd.update();
+        this.game.add.sprite(0, 0, wallsBmd);
+
+        this.maskGraphics = this.game.add.graphics(0, 0);
 
         this.pfeet = this.game.add.sprite(888, 648, 'feet', 'f0001');
         this.pfeet.anchor.setTo(0.5, 0.5);
@@ -216,6 +228,28 @@ BasicGame.Game.prototype = {
         this.pbody.x = this.pfeet.x;
         this.pbody.y = this.pfeet.y;
 
+        this.maskGraphics.clear();
+        this.maskGraphics.lineStyle(2, 0xffffff, 1);
+        for (var i = 0; i < this.numOfRays; i++) {
+            this.maskGraphics.moveTo(this.pbody.x, this.pbody.y);
+            var rayAngle = this.pbody.angle - (this.lightAngle / 2) + (this.lightAngle / this.numOfRays) * i;
+            var lastX = this.pbody.x;
+            var lastY = this.pbody.y;
+            for (var j = 0; j <= this.rayLen; j += 1) {
+                var landingX = Math.round(this.pbody.x - (2 * j) * Math.cos(rayAngle));
+                var landingY = Math.round(this.pbody.y - (2 * j) * Math.sin(rayAngle));
+                if (this.wallsBmd.getPixel32(landingX, landingY) == 0x01bababa) {
+                    lastX = landingX;
+                    lastY = landingY;
+                }
+                else {
+                    this.maskGraphics.lineTo(lastX, lastY);
+                    break;
+                }
+            }
+            this.maskGraphics.lineTo(lastX, lastY);
+        }
+
         //this.pbody.rotation = this.pfeet.rotation;
 
         this.game.physics.arcade.overlap(this.pfeet, this.book1, this.collectBook, null, this);
@@ -261,10 +295,15 @@ BasicGame.Game.prototype = {
         
         //  And brings the aliens back from the dead :)
         this.book1.revive();
+        this.book1.reset(48, 48);
         this.book2.revive();
+        this.book2.reset(264, 312);
         this.book3.revive();
+        this.book3.reset(768, 120);
         this.book4.revive();
+        this.book4.reset(96, 395);
         this.book5.revive();
+        this.book5.reset(456, 668);
 
         //  resets the player
         this.pfeet.reset(888, 648);
